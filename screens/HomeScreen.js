@@ -6,7 +6,7 @@ import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import * as OutlineIcons from "react-native-heroicons/outline";
 import * as SolidIcons from "react-native-heroicons/solid";
 import Chat_Hot_Reward from "../components/Chat_Hot_Reward/Chat_Hot_Reward";
-
+import client  from "../sanity";
 const HomeScreen = () => {
   const navigation = useNavigation();
   useLayoutEffect(() => {
@@ -16,7 +16,45 @@ const HomeScreen = () => {
     });
   }, []);
 
+const [welcomeValue,setWelcomeValue] =useState([])
+useEffect(()=>{
+  client.fetch(`
+  *[ _type == "welcomeMessage"]
+{
+  _id,content,name,name2
+}
+  `).then( data => {
+    setWelcomeValue(data)
+  })
+},[])
 
+const [categoryValue, setCategoryValue] = useState([])
+const [categoryValue2, setCategoryValue2] = useState([])
+
+useEffect(()=>{
+client.fetch(`
+*[ _type == "category"]
+{
+  _id,title,navigateTitle,description,pos
+}|order(pos)[0..2]
+
+`).then( data => setCategoryValue(data))
+},[])
+
+
+useEffect(()=>{
+  client.fetch(`
+  *[ _type == "category"]
+  {
+    _id,title,navigateTitle,description,pos
+  }|order(pos)[3..4]
+  
+  `).then( data => setCategoryValue2(data))
+  },[])
+
+
+// console.log(welcomeValue)
+console.log(categoryValue)
 
   {/* login and signup popup tab toggle */}
   const [value,setVisibility] = useState("none")
@@ -66,130 +104,103 @@ const HomeScreen = () => {
         className="bg-black"
         contentContainerStyle={{ paddingBottom: 200 }}
       >
-        <View className="bg-[#fffbeb] rounded-lg p-4 m-4">
-          <Text className="text-[#6e002b] text-2xl font-bold tracking-wide">
-            Hello!
-          </Text>
-          <Text className="text-[#6e002b] text-2xl font-bold tracking-wide">
-            Welcome Back!
-          </Text>
-          <Text className="text-[#6e002b] text-2xl  tracking-wide">
-            Start exploring the easy japa tips from us and from the community
-          </Text>
-        </View>
+        {
+          welcomeValue.map((items)=>{
+            return         <View key={items._id} className="bg-[#fffbeb] rounded-lg p-4 m-4">
+            <Text className="text-[#6e002b] text-2xl font-bold tracking-wide">
+            {items.name}
+            </Text>
+            <Text className="text-[#6e002b] text-2xl font-bold tracking-wide">
+            {items.name2}
+            </Text>
+            <Text className="text-[#6e002b] text-2xl  tracking-wide">
+            {items.content}
+            </Text>
+          </View>
+          })
+
+        }
+
 
         <View className="bg-[#fffbeb] rounded-3xl p-4 ">
-          <Chat_Hot_Reward
-            Chat_Hot_Reward={{
-              title: "Chat",
-              // altIcon:<OutlineIcons.StopIcon
-              // className="text-white"
-              // />,
-              icon: (
-                <OutlineIcons.ChatBubbleLeftRightIcon
-                  className="text-white"
-                  size={30}
-                />
-              ),
-              content:
-                "Ask every of your travel concerns, connect with amazing others that have successfully relocated and those who intends to Japa.",
-              gate_way_text: "Start connecting",
-              icon2: (
-                <SolidIcons.ArrowLongRightIcon
-                  className="text-white "
-                  size={30}
-                />
-              ),
-            }}
-          />
+        {
 
-          <Chat_Hot_Reward
-            Chat_Hot_Reward={{
-              title: "HotUpdate",
-              icon: (
-                <OutlineIcons.LightBulbIcon className="text-white" size={30} />
-              ),
-              content:
-                "Everything you have ever wanted to know about traveling abroad! Access all our helpful contents to keep abreast of all relocation updates, never pass up a major japa opportunity!",
-              gate_way_text: "Explore",
-              icon2: (
-                <SolidIcons.ArrowLongRightIcon
-                  className="text-white "
-                  size={30}
-                />
-              ),
-            }}
-          />
+categoryValue.map((items)=>{
 
-          <Chat_Hot_Reward
-            Chat_Hot_Reward={{
-              title: "Reward",
-              icon: (
-                <OutlineIcons.TrophyIcon className="text-white" size={30} />
-              ),
-              content:
-                "Tell your friends and family about EasyJapa App, collect points and redeem for cash and gifts.",
-              gate_way_text: "Get rewards",
-              icon2: (
-                <SolidIcons.ArrowLongRightIcon
-                  className="text-white "
-                  size={30}
-                />
-              ),
-            }}
-          />
+  return        <Chat_Hot_Reward key={items._id}
+  Chat_Hot_Reward={{
+    title: items.title,
+    // altIcon:<OutlineIcons.StopIcon
+    // className="text-white"
+    // />,
+ 
+    icon: 
+      items.pos == 1?(
+      
+        <OutlineIcons.ChatBubbleLeftRightIcon
+          className="text-white"
+          size={30}
+        />
+      ) : items.pos == 2 ?(
+      
+        <OutlineIcons.LightBulbIcon
+          className="text-white"
+          size={30}
+        />
+      ):(
+        <OutlineIcons.TrophyIcon className="text-white" size={30} />
+      )
+    ,
+    content:
+      items.description,
+    gate_way_text: "Start connecting",
+    icon2: (
+      <SolidIcons.ArrowLongRightIcon
+        className="text-white "
+        size={30}
+      />
+    ),
+  }}
+/>
 
-          <Chat_Hot_Reward
-            Chat_Hot_Reward={{
-              title: "CV, SOP, and other Doc review",
-              altIcon: (
-                <OutlineIcons.ShieldCheckIcon
-                  className="text-white"
-                  size={40}
-                />
-              ),
-              icon: (
-                <OutlineIcons.BookmarkIcon className="text-white" size={30} />
-              ),
-              content:
-                " Avoid pitfalls, have your CV, SOP and other travel documents reviewed by us.\
-  Our associates are trained to help you.",
-              gate_way_text: "Get started",
-              icon2: (
-                <SolidIcons.ArrowLongRightIcon
-                  className="text-white "
-                  size={30}
-                />
-              ),
-              backgroundColor: "#6e002b",
-            }}
-          />
+})
+}
 
-          <Chat_Hot_Reward
-            Chat_Hot_Reward={{
-              title: "Remote and VISA sponsored jobs",
-              altIcon: (
-                <OutlineIcons.ShieldCheckIcon
-                  size={40}
-                  className="text-white"
-                />
-              ),
-              icon: (
-                <OutlineIcons.BriefcaseIcon className="text-white" size={30} />
-              ),
-              content:
-                "Connect with International Companies searching for Nigerians to hire (VISA and Flight sponsored)\
-  Also, access exclusive International remote jobs no one tells you about.",
-              gate_way_text: "Get started",
-              icon2: (
-                <SolidIcons.ArrowLongRightIcon
-                  className="text-white "
-                  size={30}
-                />
-              ),
-              backgroundColor: "#6e002b",
-            }}
-          />
+
+{
+
+categoryValue2.map((items)=>{
+
+  return    <Chat_Hot_Reward
+  Chat_Hot_Reward={{
+    title: items.title,
+    altIcon: (
+      <OutlineIcons.ShieldCheckIcon
+        className="text-white"
+        size={40}
+      />
+    ),
+    icon:items.pos == 3 ?  (
+      <OutlineIcons.BookmarkIcon className="text-white" size={30} />
+    ):  (
+      <OutlineIcons.BriefcaseIcon className="text-white" size={30} />
+    ),
+    content:items.description,
+    gate_way_text: "Get started",
+    icon2: (
+      <SolidIcons.ArrowLongRightIcon
+        className="text-white "
+        size={30}
+      />
+    ),
+    backgroundColor: "#6e002b",
+  }}
+/>
+
+})
+}
+
+
         </View>
       </ScrollView>
 

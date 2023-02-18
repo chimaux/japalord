@@ -15,5 +15,17 @@ export default defineType({
       title: 'Description',
       type: 'text',
     }),
+    defineField({
+      name: 'navigateTitle',
+      title: 'NavigateTitle',
+      type: 'string',
+    }),
+    defineField({
+      name: 'pos',
+      title: 'Pos',
+      type: 'number',
+      validation: Rule => Rule.required().positive().max(10)
+    }),
+
   ],
 })

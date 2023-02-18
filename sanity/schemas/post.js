@@ -23,7 +23,7 @@ export default defineType({
       name: 'author',
       title: 'Author',
       type: 'reference',
-      to: {type: 'author'},
+      to: {type: 'welcomeMessage'},
     }),
     defineField({
       name: 'mainImage',
