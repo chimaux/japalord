@@ -64,8 +64,9 @@ const Slide = ({ item }) => {
         </View>
 
         <LinearGradient
-          className="flex-1  "
+          className="flex-1"
           colors={["rgba(26, 27, 28,0)", "rgba(26, 27, 28,1)"]}
+          locations={[0, 0.8]}
         >
           <View>
             <View className="flex items-center pt-20 ">
@@ -79,6 +80,8 @@ const Slide = ({ item }) => {
           </View>
         </LinearGradient>
       </View>
+
+      <View className="w-full h-[500px] bg-[#1A1B1C] absolute top-[490px] -z-10"></View>
     </ScrollView>
   );
 };
@@ -92,7 +95,7 @@ const OnboardingScreen = () => {
   if (!showHomePage) {
     return (
       <SafeAreaView className="flex-1   bg-[#6E002B]">
-        <View className="flex-1  bg-[#1a1b1c]">
+        <View className="flex-1  ">
           {/* <StatusBar className="bg-[#6E002B]" /> */}
 
           <AppIntroSlider
@@ -110,7 +113,9 @@ const OnboardingScreen = () => {
               setShowHomePage(true);
             }}
           />
+         
         </View>
+       
       </SafeAreaView>
     );
   }

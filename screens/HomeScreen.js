@@ -78,10 +78,21 @@ console.log(categoryValue)
       <View className="absolute z-10 top-[80px] right-[10px] bg-[#fffbeb] rounded p-4"
       style={{display:value}}
       >
-        <TouchableOpacity>
+        <TouchableOpacity  
+     
+        onPress={() => 
+          {
+            navigation.navigate('LogRegScreen',{data:'login'})
+            setVisibility("none")
+          }
+        }>
           <Text className="mb-2 text-lg tracking-wider">Login</Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => 
+          {navigation.navigate('LogRegScreen',{data:'reg'})
+          setVisibility("none")
+          }
+        }>
           <Text className="text-lg tracking-wider">Signup</Text>
         </TouchableOpacity>
       </View>
@@ -171,7 +182,7 @@ categoryValue.map((items)=>{
 
 categoryValue2.map((items)=>{
 
-  return    <Chat_Hot_Reward
+  return    <Chat_Hot_Reward key={items._id}
   Chat_Hot_Reward={{
     title: items.title,
     altIcon: (
