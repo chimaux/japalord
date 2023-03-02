@@ -14,6 +14,7 @@ import CommunityChat from "./screens/CommunityChat";
 import Dashboard from "./screens/Dashboard";
 import Documents from "./screens/Documents";
 import Jobs from "./screens/Jobs";
+import PremiumPackages from "./screens/PremiumPackages";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Stack = createNativeStackNavigator();
@@ -48,6 +49,7 @@ export default function App() {
           <Stack.Screen name="CommunityChat" component={CommunityChat} />
           <Stack.Screen name="Dashboard" component={Dashboard} />
           <Stack.Screen name="Documents" component={Documents} />
+          <Stack.Screen name="PremiumPackages" component={PremiumPackages} />
           <Stack.Screen name="Jobs" component={Jobs} />
         </Stack.Navigator>
       </NavigationContainer>
@@ -77,6 +79,7 @@ export default function App() {
   // <Stack.Screen name="CommunityChat" component={CommunityChat} />
   // <Stack.Screen name="Dashboard" component={Dashboard} />
   // <Stack.Screen name="Documents" component={Documents} />
+  // <Stack.Screen name="PremiumPackages" component={PremiumPackages} />
   // <Stack.Screen name="Jobs" component={Jobs} />
   //   </Stack.Navigator>
   // </NavigationContainer>

@@ -1,12 +1,13 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text,TouchableOpacity } from "react-native";
 
 const Button1 = ({
-  buttonProps: { width, backgroundColor, color, pright,mleft, title, icon, fontBold,bborder,pbottom},
+  buttonProps: { onPress ,width, backgroundColor, color, pright,mleft, title, icon, fontBold,bborder,pbottom},
 }) => {
-  console.log(pbottom,"chim")
+  
   return (
-    <View
+    <TouchableOpacity
+    onPress={()=>onPress() }
       className={`${bborder} ${width} rounded  text-center ${pbottom} py-3`}
       style={[ icon? {backgroundColor:backgroundColor,display:"flex",flexDirection:"row",alignItems:"center",justifyContent:"space-between",paddingLeft:40, paddingRight:40  }:{backgroundColor:backgroundColor} ]}
     >
@@ -17,7 +18,7 @@ const Button1 = ({
       >
         {title}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

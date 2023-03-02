@@ -7,8 +7,12 @@ import Button1 from "./Button1";
 const SideMenu = ({ props: { state, visibility } }) => {
   const image = { img: require("../images/logo.png") };
   const navigation = useNavigation()
+  const open=()=>{
+    navigation.navigate("PremiumPackages")
+    visibility("hidden")
+  }
   return (
-    <View className={`${state}  absolute top-[90px]  z-50 `}>
+    <View className={`${state}  absolute  z-50 `}>
 
 <TouchableOpacity className="w-[100vw] h-[100vh]  bg-zinc-900 opacity-75"
 onPress={()=>{
@@ -36,7 +40,11 @@ onPress={()=>{
         <Ionicons name="ios-grid-outline" size={30} color="#6e002b" />
 
         <TouchableOpacity
-        onPress={()=> navigation.navigate("Dashboard")}
+        onPress={()=> 
+          {
+            navigation.navigate("Dashboard")
+            visibility("hidden")
+          }}
         >
         <Text className="text-lg text-[#6e002b]"
           style={{fontWeight:"bold"}}
@@ -70,7 +78,9 @@ onPress={()=>{
 
         {/* button go premium */}
         <Button1
+        
               buttonProps={{
+                onPress:open,
                 title: "Go Premium",
                 icon: <SimpleLineIcons name="diamond" size={30} color="white" />,
                 backgroundColor: "#6e002b",

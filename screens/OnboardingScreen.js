@@ -94,7 +94,7 @@ const OnboardingScreen = () => {
   const navigation = useNavigation();
   if (!showHomePage) {
     return (
-      <SafeAreaView className="flex-1   bg-[#6E002B]">
+      <SafeAreaView className="flex-1   bg-[#1A1B1C]">
         <View className="flex-1  ">
           {/* <StatusBar className="bg-[#6E002B]" /> */}
 

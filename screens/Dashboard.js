@@ -112,16 +112,18 @@ const Dashboard = () => {
             ),
             icon: <MaterialIcons name="bolt" size={24} color="black" />,
             title:"5200",
-            content:"Available Points"
+            content:"Available Points",
+            iconBG:"bg-green-100"
           }}
         />
 
 
 <DashboardTab
           props={{
-            icon: <MaterialIcons name="bolt" size={24} color="black" />,
-            title:"5200",
-            content:"Available Points"
+            icon: <MaterialIcons name="bar-chart" size={24} color="black" />,
+            title:"10500",
+            content:"All Time Points",
+            iconBG:"bg-indigo-100"
           }}
         />
 
@@ -133,7 +135,8 @@ const Dashboard = () => {
           props={{
             icon: <Entypo name="check" size={24} color="black" />,
             title:"9950",
-            content:"Available Points"
+            content:"Redeemed Points",
+            iconBG:"bg-blue-100"
           }}
         />
 
@@ -141,8 +144,9 @@ const Dashboard = () => {
 <DashboardTab
           props={{
             icon: <MaterialIcons name="bolt" size={24} color="black" />,
-            title:"5200",
-            content:"Available Points"
+            title:"12000",
+            content:"Withdrawn Points",
+            iconBG:"bg-red-100"
           }}
         />
 </View>

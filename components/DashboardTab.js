@@ -2,10 +2,10 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { MaterialIcons  } from '@expo/vector-icons'
 
-const DashboardTab = ({props:{btn, icon,title,content}}) => {
+const DashboardTab = ({props:{btn, icon,title,content,iconBG}}) => {
   return (
     <View
-    className="flex justify-center my-4  py-4 px-2 bg-white rounded-xl"
+    className="flex justify-center my-4  py-4 px-2 bg-white rounded-xl w-[45vw]"
     style={{
       shadowOffset: { width: 3, height: 3 },
       shadowColor: "black",
@@ -17,7 +17,7 @@ const DashboardTab = ({props:{btn, icon,title,content}}) => {
 <View className="flex-row items-center ">
 
 
-<View className="mr-2 rounded-full h-[auto] bg-green-300">
+<View className={`mr-[1px] rounded-full h-[auto] ${iconBG}`}>
 {icon}
 </View> 
 
