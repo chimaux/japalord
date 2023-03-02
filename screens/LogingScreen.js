@@ -13,6 +13,7 @@ import {
 import InputField from "../components/InputField";
 import * as Icons from "react-native-heroicons/solid";
 import Button1 from "../components/Button1";
+import { AntDesign } from '@expo/vector-icons'; 
 function LogingScreen() {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => {
@@ -81,6 +82,7 @@ function LogingScreen() {
               buttonProps={{
                 fontBold: "bold",
                 title: "Login",
+                pbottom: "my-6",
                 backgroundColor: "#bd0d50",
                 color: "white",
                 boxShadow:
@@ -99,7 +101,8 @@ function LogingScreen() {
             <Button1
               buttonProps={{
                 title: "Continue with Google",
-                icon: <Icons.UserGroupIcon />,
+                icon: <AntDesign name="google" size={28} color="#6e002b" />,
+                pbottom: "my-6",
                 backgroundColor: "white",
                 color: "#6e002b",
               }}
@@ -115,7 +118,7 @@ function LogingScreen() {
              
             </View>
           </LinearGradient>
-          <View className="w-full h-[200px] bg-[#1A1B1C] absolute top-[860px] -z-10">
+          <View className="w-full h-[200px] bg-[#1A1B1C] absolute top-[810px] -z-10">
 
           </View>
       </ScrollView>

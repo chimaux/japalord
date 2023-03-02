@@ -1,37 +1,59 @@
 import React from "react";
 import { Text, TouchableOpacity, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-function Chat_Hot_Reward(props) {
+function Chat_Hot_Reward({Chat_Hot_Reward:{pos,icon2,backgroundColor,altIcon,icon,title,content,gate_way_text}}) {
   // bg-[#1A1A1A]
+
+  const navigation = useNavigation()
   return (
-    <TouchableOpacity
+    <View
       className="w-full   rounded p-4 mb-4"
       style={{
-        backgroundColor: props.Chat_Hot_Reward.backgroundColor
-          ? props.Chat_Hot_Reward.backgroundColor
+        backgroundColor:backgroundColor
+          ? backgroundColor
           : "#1A1A1A",
       }}
     >
       <View className="w-full  flex-row justify-end ">
-        {props.Chat_Hot_Reward.altIcon ? props.Chat_Hot_Reward.altIcon : ""}
+        {altIcon ? altIcon : ""}
       </View>
       <View className="flex-row  space-x-2">
-        {props.Chat_Hot_Reward.icon}
+        {icon}
         <Text className="text-white font-bold tracking-wide text-xl mb-2">
-          {props.Chat_Hot_Reward.title}
+          {title}
         </Text>
       </View>
 
       <Text className="text-white text-lg tracking-wide">
-        {props.Chat_Hot_Reward.content}
+        {content}
       </Text>
-      <View className="flex-row justify-end items-center space-x-2">
+      <TouchableOpacity className="flex-row justify-end items-center space-x-2"
+      onPress={()=>{
+       if(pos == 1){
+        navigation.navigate("CommunityChat")
+       }
+       else if(pos == 2){
+        navigation.navigate("UpdateScreen")
+       }
+       else if(pos == 3){
+        navigation.navigate("Dashboard")
+       }
+       else if(pos == 4){
+        navigation.navigate("Documents")
+       }
+       else if(pos == 5){
+        navigation.navigate("Jobs")
+       }
+       
+      }}
+      >
         <Text className="text-white text-lg tracking-wide font-bold">
-          {props.Chat_Hot_Reward.gate_way_text}
+          {gate_way_text}
         </Text>
-        {props.Chat_Hot_Reward.icon2}
-      </View>
-    </TouchableOpacity>
+        {icon2}
+      </TouchableOpacity>
+    </View>
   );
 }
 

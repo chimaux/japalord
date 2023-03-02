@@ -13,6 +13,8 @@ import {
 import InputField from "../components/InputField";
 import * as Icons from "react-native-heroicons/solid";
 import Button1 from "../components/Button1";
+import { AntDesign } from '@expo/vector-icons'; 
+
 function RegisterScreen() {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => {
@@ -88,6 +90,7 @@ function RegisterScreen() {
               buttonProps={{
                 fontBold: "bold",
                 title: "Signup",
+                pbottom: "my-6",
                 backgroundColor: "#bd0d50",
                 color: "white",
                 boxShadow:
@@ -106,8 +109,9 @@ function RegisterScreen() {
             <Button1
               buttonProps={{
                 title: "Continue with Google",
-                icon: <Icons.UserGroupIcon />,
+                icon: <AntDesign name="google" size={28} color="#6e002b" />,
                 backgroundColor: "white",
+                pbottom: "my-6",
                 color: "#6e002b",
               }}
             />
