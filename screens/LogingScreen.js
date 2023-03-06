@@ -36,6 +36,7 @@ function LogingScreen() {
             inputProps={{
               title: "Email",
               placeholder: "Email Address",
+              placeholderTextColor:"#c5c5c5",
               icon1: "",
               icon2: "",
             }}
@@ -45,6 +46,7 @@ function LogingScreen() {
             inputProps={{
               title: "Password",
               placeholder: "Password",
+              placeholderTextColor:"#c5c5c5",
               icon1: "",
               icon2: "",
               type:"true"

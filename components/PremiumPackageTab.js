@@ -12,7 +12,7 @@ const PremiumPackageTab = ({props:{amount}}) => {
         shadowColor: "black",
         shadowOpacity: 0.1,
         elevation: 1,
-        zIndex: 999,
+        zIndex: 999, 
       }}
     >
       <View className="flex-row mt-4 mb-8">

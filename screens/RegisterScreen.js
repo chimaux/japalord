@@ -35,6 +35,7 @@ function RegisterScreen() {
             inputProps={{
               title: "Email",
               placeholder: "Email Address",
+              placeholderTextColor:"#c5c5c5",
               icon1: "",
               icon2: "",
             }}
@@ -44,6 +45,7 @@ function RegisterScreen() {
             inputProps={{
               title: "Password",
               placeholder: "Password",
+              placeholderTextColor:"#c5c5c5",
               icon1: "",
               icon2: "",
               type:"true"
@@ -53,6 +55,7 @@ function RegisterScreen() {
             inputProps={{
               title: "Confirm Password",
               placeholder: "Password",
+              placeholderTextColor:"#c5c5c5",
               icon1: "",
               icon2: "",
               type:"true"
