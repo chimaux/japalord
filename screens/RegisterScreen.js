@@ -48,7 +48,7 @@ function RegisterScreen() {
               placeholderTextColor:"#c5c5c5",
               icon1: "",
               icon2: "",
-              type:"true"
+              type:true
             }}
           />
                     <InputField
@@ -58,7 +58,7 @@ function RegisterScreen() {
               placeholderTextColor:"#c5c5c5",
               icon1: "",
               icon2: "",
-              type:"true"
+              type:true
             }}
           />
           <View className="w-full my-4 space-y-2 sm:flex sm:flex-row sm:justify-between sm:items-center">

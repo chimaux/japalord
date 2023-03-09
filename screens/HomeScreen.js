@@ -68,8 +68,6 @@ const HomeScreen = () => {
       .then((data) => setCategoryValue2(data));
   }, []);
 
-console.log(welcomeValue)
-  // console.log(categoryValue2);
 
  
   //SafeAreaView instructions for android

@@ -23,7 +23,8 @@ function InputField({
                 zIndex: 999,
                 backgroundColor: "#303030",
               }: identity?{
-                backgroundColor: "#626262",
+                // backgroundColor: "#626262",
+                backgroundColor: "#424141",
               }
             : { backgroundColor: "white" },
         ]}

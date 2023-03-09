@@ -1,6 +1,6 @@
 import blockContent from './blockContent'
 import category from './category'
-import post from './post'
+import HotUpdate from './HotUpdate'
 import welcomeMessage from './welcomeMessage'
 
-export const schemaTypes = [post, welcomeMessage, category, blockContent]
+export const schemaTypes = [HotUpdate, welcomeMessage, category, blockContent]

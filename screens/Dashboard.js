@@ -90,8 +90,7 @@ const Dashboard = () => {
             <View className=" px-2 py-3 flex w-[80%]  items-end  rounded-full bg-[#6e002b]">
               <View className="flex-row items-center">
                 <AntDesign name="star" size={20} color="#ffffffbb" />
-                <Text className="text-[#ffffffbb] " style={{ fontSize: 18 }}>
-                  {" "}
+                <Text className="text-[#ffffffbb] " style={{ fontSize:18, }}>
                   5200/6000
                 </Text>
               </View>
@@ -105,7 +104,7 @@ const Dashboard = () => {
           props={{
             btn: (
               <View className="mt-2 w-[30vw]  flex items-center py-[3px] rounded-full  bg-[#6e002b]">
-                <Text className="text-[#fffffff1] " style={{ fontSize: 18 }}>
+                <Text className="text-[#fffffff1] " style={{ fontSize:18, }}>
                   Redeem
                 </Text>
               </View>
@@ -220,7 +219,7 @@ style={{fontWeight:"bold"}}
             <Text className=" ml-2">https:..easyjapa?ref/12345</Text>
             <View className=" px-2 py-2 flex w-[30%]  items-center  rounded-full bg-[#6e002b]">
               <View className="flex-row items-center">
-                <Text className="text-[#fffffff0] " style={{ fontSize: 18 }}>
+                <Text className="text-[#fffffff0] " style={{ fontSize:18, }}>
                  copy
                 </Text>
               </View>
