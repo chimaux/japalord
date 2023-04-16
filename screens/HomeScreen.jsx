@@ -75,7 +75,7 @@ const HomeScreen = () => {
     setStatusBarTranslucent(false);
   }, []);
 
-  const [menuValue, setMenuValue] = useState("hidden");
+  const [menuValue, setMenuValue] = useState("hidden"); 
   const [menuValue2, setMenuValue2] = useState("hidden");
   return (
     <SafeAreaView className="bg-[#6e002b]">
@@ -85,7 +85,8 @@ const HomeScreen = () => {
             state:menuValue,
             visibility:setMenuValue,
             state2:menuValue2,
-            visibility2:setMenuValue2
+            visibility2:setMenuValue2,
+            title:"EasyJapa"
         }}
         />
 

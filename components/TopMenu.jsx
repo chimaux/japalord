@@ -1,12 +1,12 @@
 import { useNavigation } from "@react-navigation/native";
 import { setStatusBarTranslucent } from "expo-status-bar";
 import React, { useLayoutEffect, useState, useEffect } from "react";
-import { TouchableOpacity } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
 import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import * as OutlineIcons from "react-native-heroicons/outline";
 
 
-const TopMenu = ({props:{state,visibility,state2,visibility2}}) => {
+const TopMenu = ({props:{state,visibility,state2,visibility2,image,title}}) => {
 
     
     const navigation = useNavigation();
@@ -63,7 +63,7 @@ const TopMenu = ({props:{state,visibility,state2,visibility2}}) => {
           )}
         </TouchableOpacity>
         <Text className="text-white font-bold text-lg tracking-wide">
-          EasyJapa
+          {title}
         </Text>
         <TouchableOpacity
           className="mr-4 rounded-full p-2 border-2 border-[#ffffff71] "
@@ -80,7 +80,15 @@ const TopMenu = ({props:{state,visibility,state2,visibility2}}) => {
             }
           }}
         >
+          { image ?
+          <Image
+          source={image}
+          className="w-[30px] h-[30px]"
+          style={{ resizeMode: "contain" }}
+          />:
           <OutlineIcons.UserCircleIcon className=" text-white " size={30} />
+        }
+          
         </TouchableOpacity>
       </View>
     </View>

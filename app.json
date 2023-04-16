@@ -1,14 +1,16 @@
 {
   "expo": {
-    "name": "japa-app",
-    "slug": "japa-app",
+    "name": "Easy Japa",
+    "slug": "easy-japa",
+    "description":"Easy Japa",
+    "privacy":"unlisted",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {

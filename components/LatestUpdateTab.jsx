@@ -1,12 +1,16 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
+
+
+import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native'
 import React from 'react'
 import { urlFor } from "../sanity";
 
+import { useNavigation } from '@react-navigation/native';
 
 
-const LatestUpdateTab = ({ props: { data } }) => {
 
+const  LatestUpdateTab= ({ props: { data } }) => {
 
+const navigation = useNavigation()
 
 
 
@@ -81,57 +85,63 @@ const Article = (content) => {
 }
 // Calculate reading time ends here
   
-  return (
+  
+return (
+<View>
+{
 
-    <View>
-      {
+  data.map((items) => {
+   
+    return (
+      <TouchableOpacity className="flex-row bg-[#424141] my-2 mx-4 rounded-xl"
+      key={items._id.toString()}
+      activeOpacity={0.9}
+      onPress={()=>{
+        navigation.navigate("HotUpdateDetailPage",{id:items._id,title:items.title,content:items.content,image:items.image})
+      }}
+      >
 
-        data.map((items) => {
-         
-          return (
-            <TouchableOpacity className="flex-row bg-[#424141] my-2 mx-4 rounded-xl"
-            key={items._id.toString()}
-            activeOpacity={0.9}
-            >
+        <View className="w-[40%]">
+          <Image
+           
+            source={{
+              uri: urlFor(items.image).url(),
+            }}
+            className=" rounded-xl"
+            resizeMode="cover"
+            style={{ width: "100%", height: 150 }}
+          />
+        </View>
 
-              <View className="w-[40%]">
-                <Image
-                 
-                  source={{
-                    uri: urlFor(items.image).url(),
-                  }}
-                  className=" rounded-xl"
-                  resizeMode="cover"
-                  style={{ width: "100%", height: 150 }}
-                />
-              </View>
-
-              <View className="w-[59%] h-[150px] px-2 py-2">
-                <View className="text-white flex-1 mb-2 flex-row flex-wrap">
-                <Text 
-                className="text-white"
-                style ={{fontWeight:"bold"}}
-                >{truncateText(items.title,80)}</Text>
-                </View>
+        <View className="w-[59%] h-[150px] px-2 py-2">
+          <View className="text-white flex-1 mb-2 flex-row flex-wrap">
+          <Text 
+          className="text-white"
+          style ={{fontWeight:"bold"}}
+          numberOfLines={4}
+          >{items.title}</Text>
+          </View>
 
 
-                <View className="flex-row justify-between flex-wrap ">
-                  <Text className="text-gray-400 mb-[3px]"
-                  style ={{fontWeight:"bold"}}
-                  >{Article(items.content)}</Text>
-                  <Text className="text-gray-400"
-                  style ={{fontWeight:"bold"}}
-                  >{formatCreatedAt(items. _createdAt)}</Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-          )
-        })
-      }
+          <View className="flex-row justify-between flex-wrap ">
+            <Text className="text-gray-400 mb-[3px]"
+            style ={{fontWeight:"bold"}}
+            >{Article(items.content)}</Text>
+            <Text className="text-gray-400"
+            style ={{fontWeight:"bold"}}
+            >{formatCreatedAt(items. _createdAt)}</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    )
+  })
+}
 
-    </View>
-
-  )
+</View>
+)
 }
 
 export default LatestUpdateTab
+
+
+

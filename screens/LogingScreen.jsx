@@ -14,12 +14,13 @@ import InputField from "../components/InputField";
 import * as Icons from "react-native-heroicons/solid";
 import Button1 from "../components/Button1";
 import { AntDesign } from '@expo/vector-icons'; 
-
-function RegisterScreen() {
+function LogingScreen() {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => {
     setIsEnabled((prev) => !prev);
   };
+
+
   const navigation = useNavigation()
   return (
     <SafeAreaView className="flex-1 bg-[#6e002b]">
@@ -27,7 +28,7 @@ function RegisterScreen() {
     
       >
         <Text className="w-full text-center text-white text-4xl font-bold pt-20 pb-10 tracking-wider">
-          Signup
+          Login
         </Text>
 
         <View className="px-4">
@@ -51,16 +52,6 @@ function RegisterScreen() {
               type:true
             }}
           />
-                    <InputField
-            inputProps={{
-              title: "Confirm Password",
-              placeholder: "Password",
-              placeholderTextColor:"#c5c5c5",
-              icon1: "",
-              icon2: "",
-              type:true
-            }}
-          />
           <View className="w-full my-4 space-y-2 sm:flex sm:flex-row sm:justify-between sm:items-center">
             <View className="space-x-2 flex flex-row">
               <Switch
@@ -76,9 +67,13 @@ function RegisterScreen() {
               </Text>
             </View>
 
-            <Text className="text-white text-lg tracking-wider">
+        <TouchableOpacity
+        onPress={()=> navigation.navigate("ForgotPasswordPage")}
+        >
+        <Text className="text-white text-lg tracking-wider">
               Forgot password?
             </Text>
+        </TouchableOpacity>
           </View>
         </View>
 
@@ -92,7 +87,7 @@ function RegisterScreen() {
             <Button1
               buttonProps={{
                 fontBold: "bold",
-                title: "Signup",
+                title: "Login",
                 pbottom: "my-6",
                 backgroundColor: "#bd0d50",
                 color: "white",
@@ -104,7 +99,7 @@ function RegisterScreen() {
             <View className="flex-row items-center justify-between">
               <View className="w-[100px] border-b-2 border-white"></View>
               <Text className="text-white text-lg tracking-wider">
-                Or Signup with{" "}
+                Or login with{" "}
               </Text>
               <View className="w-[100px] border-b-2 border-white"></View>
             </View>
@@ -113,23 +108,23 @@ function RegisterScreen() {
               buttonProps={{
                 title: "Continue with Google",
                 icon: <AntDesign name="google" size={28} color="#6e002b" />,
-                backgroundColor: "white",
                 pbottom: "my-6",
+                backgroundColor: "white",
                 color: "#6e002b",
               }}
             />
 
             <View className="flex flex-row space-x-2 mt-14">
-              <Text className="text-white text-lg">Already have an account?</Text>
+              <Text className="text-white text-lg">Dont have an account?</Text>
               <TouchableOpacity
-              onPress={()=> navigation.navigate('LogRegScreen',{data:'login'})}
+              onPress={()=> navigation.navigate('LogRegScreen',{data:'reg'})}
               >
-              <Text className=" text-lg text-[#6e002b]" style={{fontWeight:"bold"}}>Login</Text>
+              <Text className=" text-lg text-[#6e002b]" style={{fontWeight:"bold"}}>Signup</Text>
               </TouchableOpacity>
-              
+             
             </View>
           </LinearGradient>
-          <View className="w-full h-[200px] bg-[#1A1B1C] absolute top-[860px] -z-10">
+          <View className="w-full h-[200px] bg-[#1A1B1C] absolute top-[810px] -z-10">
 
           </View>
       </ScrollView>
@@ -137,4 +132,4 @@ function RegisterScreen() {
   );
 }
 
-export default RegisterScreen;
+export default LogingScreen;
