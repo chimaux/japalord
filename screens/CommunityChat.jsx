@@ -1,7 +1,10 @@
 import { View, Text, SafeAreaView } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
+
+import { GlobalContext } from "../Context";
 
 const CommunityChat = () => {
+ const {    menuValue, setMenuValue,}=useContext(GlobalContext)
   return (
     <SafeAreaView>
       <Text>CommunityChat</Text>

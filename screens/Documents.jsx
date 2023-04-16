@@ -1,7 +1,10 @@
 import { View, Text, SafeAreaView } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 
-const Documents = () => {
+import { GlobalContext } from "../Context";
+
+const CommunityChat = () => {
+ const {    menuValue, setMenuValue,}=useContext(GlobalContext)
   return (
     <SafeAreaView>
       <Text>Documents</Text>
@@ -9,4 +12,4 @@ const Documents = () => {
   )
 }
 
-export default Documents
+export default CommunityChat

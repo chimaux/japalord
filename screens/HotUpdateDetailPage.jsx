@@ -1,8 +1,11 @@
 import { View, Text, SafeAreaView } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import {  useRoute } from "@react-navigation/native";
 
+import { GlobalContext } from "../Context";
+
 const HotUpdateDetailPage = () => {
+ const {    menuValue, setMenuValue,}=useContext(GlobalContext)
     console.log(title)
     const {
         params:{

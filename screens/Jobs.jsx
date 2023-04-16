@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, TextInput, Dimensions,ScrollView } from "react-native";
+import { View, Text, SafeAreaView, TextInput, Dimensions,ScrollView, FlatList } from "react-native";
 import React, { useContext, useState } from "react";
 import TopMenu from "../components/TopMenu";
 import { GlobalContext } from "../Context";
@@ -7,16 +7,24 @@ import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from '@expo/vector-icons';
 import SideMenu from "../components/SideMenu";
 import JobsTab from "../components/JobsTab";
-const Jobs = () => {
+import BottomMenu from "../components/BottomMenu";
 
+
+const Jobs = () => {
+ const {   menuValue, setMenuValue,dominantColor}=useContext(GlobalContext)
+ const jobs = [1,2,3,4,5]
   const image = { img: require("../images/avatar.png") };
-  const { dominantColor } = useContext(GlobalContext);
-  const [menuValue, setMenuValue] = useState("hidden");
+
+
   const [menuValue2, setMenuValue2] = useState("hidden");
   const screenWidth = Dimensions.get("window").width;
   const screenHeight = Dimensions.get("window").height;
   return (
-    <View>
+    <View 
+    style={{
+      flex:1
+
+    }}>
       <SafeAreaView style={{ backgroundColor: dominantColor }} />
       <TopMenu
         props={{
@@ -57,11 +65,33 @@ const Jobs = () => {
         </View>
       </View>
 
-      <ScrollView>
+    
 <View className="mx-4">
+
+<FlatList
+contentContainerStyle={{
+   paddingBottom:screenHeight *0.62 
+
+}}
+ showsVerticalScrollIndicator={false}
+data={jobs}
+renderItem={({item,index})=>{
+  return(
+<View className="my-4">
 < JobsTab/>
 </View>
-      </ScrollView>
+  )
+}}
+/>
+
+
+</View>
+<BottomMenu
+        props={{
+          activeTab: "",
+          pbottom: 0,
+        }}
+      />
     </View>
   );
 };

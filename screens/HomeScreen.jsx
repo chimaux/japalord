@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { setStatusBarTranslucent } from "expo-status-bar";
-import React, { useLayoutEffect, useState, useEffect } from "react";
+import React, { useLayoutEffect, useState, useEffect, useContext } from "react";
 import { TouchableOpacity } from "react-native";
 import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import * as OutlineIcons from "react-native-heroicons/outline";
@@ -12,7 +12,11 @@ import TopMenu from "../components/TopMenu";
 import SideMenu from "../components/SideMenu";
 import BottomMenu from "../components/BottomMenu";
 import SnLpop from "../components/SnLpop";
+import { GlobalContext } from "../Context";
+import { screenHeight, screenWidth } from "../components/JobsTab";
 const HomeScreen = () => {
+  const { menuValue, setMenuValue } = useContext(GlobalContext);
+
   const navigation = useNavigation();
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -68,42 +72,46 @@ const HomeScreen = () => {
       .then((data) => setCategoryValue2(data));
   }, []);
 
-
- 
   //SafeAreaView instructions for android
   useLayoutEffect(() => {
     setStatusBarTranslucent(false);
   }, []);
 
-  const [menuValue, setMenuValue] = useState("hidden"); 
   const [menuValue2, setMenuValue2] = useState("hidden");
   return (
-    <SafeAreaView className="bg-[#6e002b]">
+    <View
+      style={{
+        flex: 1,
+      }}
+    >
+      <SafeAreaView
+        style={{
+          color: "#6E002B",
+        }}
+      />
       {/* login and signup popup tab */}
       <TopMenu
         props={{
-            state:menuValue,
-            visibility:setMenuValue,
-            state2:menuValue2,
-            visibility2:setMenuValue2,
-            title:"EasyJapa"
-        }}
-        />
-
-
-
-<SideMenu
-        props={{
-            state:menuValue,
-            visibility:setMenuValue
+          state: menuValue,
+          visibility: setMenuValue,
+          state2: menuValue2,
+          visibility2: setMenuValue2,
+          title: "EasyJapa",
         }}
       />
 
-      <SnLpop 
-              props={{
-                state2:menuValue2,
-                visibility2:setMenuValue2
-            }}
+      <SideMenu
+        props={{
+          state: menuValue,
+          visibility: setMenuValue,
+        }}
+      />
+
+      <SnLpop
+        props={{
+          state2: menuValue2,
+          visibility2: setMenuValue2,
+        }}
       />
       {/* body starts here */}
       <ScrollView
@@ -132,7 +140,7 @@ const HomeScreen = () => {
               <Chat_Hot_Reward
                 key={items._id}
                 Chat_Hot_Reward={{
-                  pos:items.pos,
+                  pos: items.pos,
                   title: items.title,
                   // altIcon:<OutlineIcons.StopIcon
                   // className="text-white"
@@ -173,7 +181,7 @@ const HomeScreen = () => {
               <Chat_Hot_Reward
                 key={items._id}
                 Chat_Hot_Reward={{
-                  pos:items.pos,
+                  pos: items.pos,
                   title: items.title,
                   altIcon: (
                     <SimpleLineIcons name="diamond" size={30} color="white" />
@@ -210,13 +218,13 @@ const HomeScreen = () => {
         </View>
       </ScrollView>
       {/* body ends here */}
-<BottomMenu 
-    props={{
-      activeTab:"bg-[#9c657aa1]",
-      pbottom:70
-    }}
-/>
-    </SafeAreaView>
+      <BottomMenu
+        props={{
+          activeTab: "bg-[#9c657aa1]",
+          pbottom: 0,
+        }}
+      />
+    </View>
   );
 };
 

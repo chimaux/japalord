@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, Text, SafeAreaView, ScrollView, FlatList, TouchableOpacity } from "react-native";
 import BottomMenu from "../components/BottomMenu";
 import SideMenu from "../components/SideMenu";
@@ -11,38 +11,10 @@ import Slider from "../components/Slider";
 import client from "../sanity";
 import LatestUpdateTab from "../components/LatestUpdateTab";
 import OtherUpdateTab from "../components/OtherUpdateTab";
-
-// const otherUpdateNews =[
-//   {
-//     image:require("../images/topNews1.jpg"),
-//     title:"There have been reports on the actor's death in the",
-//     _createdAt:"today",
-//     length:"10 minutes read"
-
-//   },
-//   {
-//     image:require("../images/topNews1.jpg"),
-//     title:"There have been reports on the actor's death in the",
-//     _createdAt:"today",
-//     length:"10 minutes read"
-
-//   },
-//   {
-//     image:require("../images/topNews1.jpg"),
-//     title:"There have been reports on the actor's death in the",
-//     _createdAt:"today",
-//     length:"10 minutes read"
-
-//   },
-// ]
-
-
-
-
-
+import { GlobalContext } from "../Context";
 
 const HotUpdateScreen = () => {
-  const [menuValue, setMenuValue] = useState("hidden");
+ const {    menuValue, setMenuValue,}=useContext(GlobalContext)
   const [menuValue2, setMenuValue2] = useState("hidden");
 
   const [topNews, setTopNews] = useState([]);
@@ -93,7 +65,20 @@ const HotUpdateScreen = () => {
 
 
   return (
-    <SafeAreaView className="flex-1 bg-[#6E002B]">
+    <View 
+    style={{
+      flex:1
+ 
+    }}
+    >
+
+<SafeAreaView
+    style={{
+   
+      color:"#6E002B"
+    }}
+    />
+
       <TopMenu
         props={{
           state: menuValue,
@@ -202,7 +187,7 @@ const HotUpdateScreen = () => {
           pbottom: 0,
         }}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 

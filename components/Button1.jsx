@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useContext} from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { GlobalContext } from "../Context";
 
 const Button1 = ({
   buttonProps: {
@@ -14,9 +15,10 @@ const Button1 = ({
     fontBold,
     bborder,
     pbottom,
-    signupFunction,
+    signupFunction, name
   },
 }) => {
+  const {setMenuValue} = useContext(GlobalContext)
   const navigation = useNavigation()
   return (
     <TouchableOpacity
@@ -36,6 +38,10 @@ const Button1 = ({
         }
         else if(title === "Reset password"){
             navigation.navigate("PasswordChangeSuccess")
+        }
+        else if(name === "PremiumPackages"){
+            navigation.navigate("PremiumPackages")
+            setMenuValue("hidden");
         }
         else {
           console.log("login");

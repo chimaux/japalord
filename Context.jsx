@@ -1,7 +1,9 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-export const GlobalContext = React.createContext()
-const Provider = ({children }) => {
+import { View, Text } from "react-native";
+import React, { useState } from "react";
+export const GlobalContext = React.createContext();
+const Provider = ({ children }) => {
+  // side menu nav
+  const [menuValue, setMenuValue] = useState("hidden");
 
   // Trucate text fuction starts here
   const truncateText = (text, maxLength) => {
@@ -14,27 +16,23 @@ const Provider = ({children }) => {
   // Truncate text function ends here
 
   //MY COORS START HERE
-  const dominantColor = "#6e002b"
+  const dominantColor = "#6e002b";
   //MY COLORS ENDS HERE
-const signupFunction = ()=>{
-   
-    console.log("navigation")
-}
+  const signupFunction = () => {
+    console.log("navigation");
+  };
 
- const store ={
+  const store = {
     signupFunction,
     dominantColor,
-    truncateText
- }
-
+    truncateText,
+    menuValue,
+    setMenuValue,
+  };
 
   return (
-  <GlobalContext.Provider value={store}>
+    <GlobalContext.Provider value={store}>{children}</GlobalContext.Provider>
+  );
+};
 
-    {children}
-
-  </GlobalContext.Provider>
-  )
-}
-
-export default Provider
+export default Provider;

@@ -6,7 +6,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import TopMenu from "../components/TopMenu";
 import SideMenu from "../components/SideMenu";
 import BottomMenu from "../components/BottomMenu";
@@ -20,14 +20,23 @@ import {
 } from "@expo/vector-icons";
 import DashboardTab from "../components/DashboardTab";
 import Button1 from "../components/Button1";
-
+import { GlobalContext } from "../Context";
 const Dashboard = () => {
-  const [menuValue, setMenuValue] = useState("hidden");
+ const {    menuValue, setMenuValue,}=useContext(GlobalContext)
   const [menuValue2, setMenuValue2] = useState("hidden");
 
   const image = { img: require("../images/Alice.png") };
   return (
-    <SafeAreaView className="flex-1 bg-[#6e002b]">
+    <View
+    style={{
+      flex:1
+    }}
+    >
+      <SafeAreaView
+          style={{
+            color:"#6E002B"
+          }}
+      />
       <TopMenu
         props={{
           state: menuValue,
@@ -244,7 +253,7 @@ const Dashboard = () => {
           pbottom: 0,
         }}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 

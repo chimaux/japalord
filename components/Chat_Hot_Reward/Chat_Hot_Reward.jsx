@@ -28,7 +28,7 @@ function Chat_Hot_Reward({Chat_Hot_Reward:{pos,icon2,backgroundColor,altIcon,ico
       <Text className="text-white text-lg tracking-wide">
         {content}
       </Text>
-      <TouchableOpacity className="flex-row justify-end items-center space-x-2"
+      <TouchableOpacity className="flex-row justify-end items-center space-x-2 py-2"
       onPress={()=>{
        if(pos == 1){
         navigation.navigate("CommunityChat")
