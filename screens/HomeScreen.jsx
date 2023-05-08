@@ -116,7 +116,7 @@ const HomeScreen = () => {
       {/* body starts here */}
       <ScrollView
         className="bg-black"
-        contentContainerStyle={{ paddingBottom: 200 }}
+        contentContainerStyle={{ paddingBottom: 50 }}
       >
         {welcomeValue.map((items) => {
           return (
@@ -218,12 +218,12 @@ const HomeScreen = () => {
         </View>
       </ScrollView>
       {/* body ends here */}
-      <BottomMenu
+      {/* <BottomMenu
         props={{
           activeTab: "bg-[#9c657aa1]",
           pbottom: 0,
         }}
-      />
+      /> */}
     </View>
   );
 };

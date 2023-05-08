@@ -181,12 +181,12 @@ const HotUpdateScreen = () => {
 
       }
 
-      <BottomMenu
+      {/* <BottomMenu
         props={{
           activeTab: "",
           pbottom: 0,
         }}
-      />
+      /> */}
     </View>
   );
 };

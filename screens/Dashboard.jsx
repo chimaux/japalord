@@ -247,12 +247,12 @@ const Dashboard = () => {
         </View>
       </ScrollView>
 
-      <BottomMenu
+      {/* <BottomMenu
         props={{
           activeTab: "",
           pbottom: 0,
         }}
-      />
+      /> */}
     </View>
   );
 };

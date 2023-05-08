@@ -86,12 +86,12 @@ renderItem={({item,index})=>{
 
 
 </View>
-<BottomMenu
+{/* <BottomMenu
         props={{
           activeTab: "",
           pbottom: 0,
         }}
-      />
+      /> */}
     </View>
   );
 };

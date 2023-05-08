@@ -14,6 +14,7 @@ import {
   ScrollView,
   TouchableWithoutFeedback,
 } from "react-native";
+import { BottomTab } from "../navigations/BottomTab";
 const { width, height } = Dimensions.get("screen");
 const colors = {
   primary: "#901142",
@@ -92,36 +93,36 @@ const OnboardingScreen = () => {
 
   const [showHomePage, setShowHomePage] = useState(false);
   const navigation = useNavigation();
-  if (!showHomePage) {
-    return (
-      <SafeAreaView className="flex-1   bg-[#1A1B1C]">
-        <View className="flex-1  ">
-          {/* <StatusBar className="bg-[#6E002B]" /> */}
 
-          <AppIntroSlider
-            data={slides}
-            renderItem={({ item }) => <Slide item={item} />}
-            activeDotStyle={{
-              backgroundColor: colors.primary,
-              width: 30,
-            }}
-            showSkipButton
-            renderNextButton={() => buttonLabel("Next")}
-            renderSkipButton={() => buttonLabel("Skip")}
-            // renderDoneButton={()=> buttonLabel("Lets Go")}
-            onDone={() => {
-              setShowHomePage(true);
-            }}
-          />
-         
-        </View>
-       
-      </SafeAreaView>
-    );
-  }
-  // if(showHomePage){
-  return <HomeScreen />;
-  //  }
+  return showHomePage === false ? (
+    <SafeAreaView className="flex-1   bg-[#1A1B1C]">
+      <View className="flex-1  ">
+        {/* <StatusBar className="bg-[#6E002B]" /> */}
+
+        <AppIntroSlider
+          data={slides}
+          renderItem={({ item }) => <Slide item={item} />}
+          activeDotStyle={{
+            backgroundColor: colors.primary,
+            width: 30,
+          }}
+          showSkipButton
+          renderNextButton={() => buttonLabel("Next")}
+          renderSkipButton={() => buttonLabel("Skip")}
+          // renderDoneButton={()=> buttonLabel("Lets Go")}
+          onDone={() => {
+            setShowHomePage(true);
+          }}
+        />
+      </View>
+    </SafeAreaView>
+  ) : (
+    <BottomTab />
+  );
+
+  // // if(showHomePage){
+  // return <HomeScreen />;
+  // //  }
 };
 
 export default OnboardingScreen;

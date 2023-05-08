@@ -64,12 +64,12 @@ const PremiumPackages = () => {
         />
       </ScrollView>
 
-      <BottomMenu
+      {/* <BottomMenu
         props={{
           activeTab: "",
           pbottom: 0,
         }}
-      />
+      /> */}
     </View>
   );
 };
