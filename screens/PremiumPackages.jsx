@@ -14,12 +14,15 @@ const PremiumPackages = () => {
   const [menuValue2, setMenuValue2] = useState("hidden");
 
   return (
-    <View className=" flex-1">
-      <SafeAreaView
+<>
+
+<SafeAreaView
         style={{
-          color: "#6E002B",
+          backgroundColor: "#6E002B",
         }}
       />
+    <View className=" flex-1">
+  
       <TopMenu
         props={{
           state: menuValue,
@@ -71,6 +74,8 @@ const PremiumPackages = () => {
         }}
       /> */}
     </View>
+</>
+
   );
 };
 

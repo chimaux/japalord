@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 
 import { GlobalContext } from "../Context";
 
-const CommunityChat = () => {
+const Documents = () => {
  const {    menuValue, setMenuValue,}=useContext(GlobalContext)
   return (
     <SafeAreaView>
@@ -12,4 +12,4 @@ const CommunityChat = () => {
   )
 }
 
-export default CommunityChat
+export default Documents

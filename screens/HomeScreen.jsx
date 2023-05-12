@@ -79,16 +79,18 @@ const HomeScreen = () => {
 
   const [menuValue2, setMenuValue2] = useState("hidden");
   return (
-    <View
+    <>
+          <SafeAreaView
+        style={{
+          backgroundColor: "#6E002B",
+        }}
+      />
+      <View
       style={{
         flex: 1,
       }}
     >
-      <SafeAreaView
-        style={{
-          color: "#6E002B",
-        }}
-      />
+
       {/* login and signup popup tab */}
       <TopMenu
         props={{
@@ -117,6 +119,7 @@ const HomeScreen = () => {
       <ScrollView
         className="bg-black"
         contentContainerStyle={{ paddingBottom: 50 }}
+        showsVerticalScrollIndicator={false}
       >
         {welcomeValue.map((items) => {
           return (
@@ -224,7 +227,9 @@ const HomeScreen = () => {
           pbottom: 0,
         }}
       /> */}
-    </View>
+    </View> 
+    </>
+ 
   );
 };
 

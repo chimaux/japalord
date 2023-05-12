@@ -21,22 +21,27 @@ import {
 import DashboardTab from "../components/DashboardTab";
 import Button1 from "../components/Button1";
 import { GlobalContext } from "../Context";
+import { BottomTab } from "../navigations/BottomTab";
+
 const Dashboard = () => {
- const {    menuValue, setMenuValue,}=useContext(GlobalContext)
+  const { menuValue, setMenuValue } = useContext(GlobalContext);
   const [menuValue2, setMenuValue2] = useState("hidden");
 
   const image = { img: require("../images/Alice.png") };
   return (
-    <View
-    style={{
-      flex:1
-    }}
-    >
-      <SafeAreaView
-          style={{
-            color:"#6E002B"
-          }}
+    <>
+          <SafeAreaView
+        style={{
+          backgroundColor: "#6E002B",
+        }}
       />
+       <View
+      style={{
+        flex: 1,
+      }}
+    >
+
+      <BottomTab />
       <TopMenu
         props={{
           state: menuValue,
@@ -110,8 +115,10 @@ const Dashboard = () => {
             <View className="  py-3 flex w-[80%]  items-end  rounded-full bg-[#6e002b]">
               <View className="flex-row items-center  ">
                 <AntDesign name="star" size={20} color="#ffffffbb" />
-                <Text className="text-[#ffffffbb] w-[80%] pr-4" style={{ fontSize: 18 }}
-                numberOfLines={1}
+                <Text
+                  className="text-[#ffffffbb] w-[80%] pr-4"
+                  style={{ fontSize: 18 }}
+                  numberOfLines={1}
                 >
                   5200/6000fdhfhbfdhxfgng
                 </Text>
@@ -254,6 +261,8 @@ const Dashboard = () => {
         }}
       /> */}
     </View>
+    </>
+ 
   );
 };
 

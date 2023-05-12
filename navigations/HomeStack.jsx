@@ -1,9 +1,10 @@
 // In App.js in a new project
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createStackNavigator } from '@react-navigation/stack';
+
 import React, { useLayoutEffect, useState, useEffect } from "react";
 import { View, Text, ScrollView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from "../screens/HomeScreen";
 import LogingScreen from "../screens/LogingScreen";
 import RegisterScreen from "../screens/RegisterScreen";
@@ -26,12 +27,12 @@ import PasswordChangeSuccess from "../screens/PasswordChangeSuccess";
 import Notification from "../screens/Notification";
 
 import DirectMessage from "../screens/DirectMessage";
-import { BottomTab } from "./BottomTab";
 
-//const Stack = createNativeStackNavigator();
- const Stack = createStackNavigator();
 
-const NavigationStack = () => {
+const Stack = createNativeStackNavigator();
+// const Stack = createStackNavigator();
+
+const HomeStack = () => {
   // const [isAppFirstLaunched, setIsAppFirstLaunched] = useState(null);
   // useLayoutEffect(async () => {
   //   const appData = await AsyncStorage.getItem("isAppFirstLaunched");
@@ -55,8 +56,7 @@ const NavigationStack = () => {
           component={OnboardingScreen}
         />
       )}
-
-      <Stack.Screen name="BottomTab" component={BottomTab} />
+      
       <Stack.Screen name="Home" component={HomeScreen} />
 
       <Stack.Screen name="LogRegScreen" component={LogRegScreen} />
@@ -91,4 +91,4 @@ const NavigationStack = () => {
 
 
 }
-export default NavigationStack
+export default HomeStack

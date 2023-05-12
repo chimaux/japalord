@@ -55,29 +55,22 @@ const HotUpdateScreen = () => {
 
 
 
-
-
-
-
-
-
-
-
-
   return (
-    <View 
+    <>
+    <SafeAreaView
+    style={{
+   
+      backgroundColor:"#6E002B"
+    }}
+    />
+        <View 
     style={{
       flex:1
  
     }}
     >
 
-<SafeAreaView
-    style={{
-   
-      color:"#6E002B"
-    }}
-    />
+
 
       <TopMenu
         props={{
@@ -188,6 +181,8 @@ const HotUpdateScreen = () => {
         }}
       /> */}
     </View>
+    </>
+
   );
 };
 

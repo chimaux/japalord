@@ -20,12 +20,14 @@ const Jobs = () => {
   const screenWidth = Dimensions.get("window").width;
   const screenHeight = Dimensions.get("window").height;
   return (
-    <View 
+    <>
+     <SafeAreaView style={{ backgroundColor: dominantColor }} />
+        <View 
     style={{
       flex:1
 
     }}>
-      <SafeAreaView style={{ backgroundColor: dominantColor }} />
+     
       <TopMenu
         props={{
           state: menuValue,
@@ -93,6 +95,8 @@ renderItem={({item,index})=>{
         }}
       /> */}
     </View>
+    </>
+
   );
 };
 

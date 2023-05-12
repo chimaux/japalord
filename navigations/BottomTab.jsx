@@ -7,13 +7,20 @@ import Notification from "../screens/Notification";
 import { Feather } from "@expo/vector-icons";
 import { StyleSheet, Text, View } from "react-native";
 import * as OutlineIcons from "react-native-heroicons/outline";
-
+import Dashboard from "../screens/Dashboard";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import NavigationStack from "./NavigationStack";
 export const deviceWidth = Dimensions.get("window").width;
+import HomeStack from "./HomeStack";
+
+
+
 console.log(deviceWidth);
 export const height = Dimensions.get("window").height;
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
-export function BottomTab({ navigation }) {
+export const BottomTab = () => {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -38,8 +45,8 @@ export function BottomTab({ navigation }) {
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={HomeScreen}
+        name="HomeStack"
+        component={HomeStack}
         options={{
           tabBarIcon: ({ focused }) => {
             return (
@@ -178,7 +185,9 @@ export function BottomTab({ navigation }) {
           },
         }}
       />
+
+      {/* <Stack.Screen name="Dashboard" component={Dashboard} /> */}
       {/* <Tab.Screen name="Settings" component={SettingsScreen} /> */}
     </Tab.Navigator>
   );
-}
+};
