@@ -20,7 +20,7 @@ import {
 } from "@expo/vector-icons";
 import DashboardTab from "../components/DashboardTab";
 import Button1 from "../components/Button1";
-import { GlobalContext } from "../Context";
+import { GlobalContext } from "../../Context";
 import { BottomTab } from "../navigations/BottomTab";
 
 const Dashboard = () => {

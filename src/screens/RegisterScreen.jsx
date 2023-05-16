@@ -14,7 +14,7 @@ import InputField from "../components/InputField";
 import * as Icons from "react-native-heroicons/solid";
 import Button1 from "../components/Button1";
 import { AntDesign } from '@expo/vector-icons'; 
-import { GlobalContext } from "../Context";
+import { GlobalContext } from "../../Context";
 function RegisterScreen() {
   
   const {signupFunction} = useContext(GlobalContext)

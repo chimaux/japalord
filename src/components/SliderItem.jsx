@@ -1,23 +1,22 @@
 import { View, Text, Image, Dimensions, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { urlFor } from "../sanity";
-const { width, height } = Dimensions.get('screen')
-import { useNavigation } from '@react-navigation/native';
+import { urlFor } from "../../sanity";
+const { width, height } = Dimensions.get("screen");
+import { useNavigation } from "@react-navigation/native";
 const SliderItem = ({ item }) => {
-
-
-
-
-
-const navigation = useNavigation()
-
+  const navigation = useNavigation();
 
   return (
     <TouchableOpacity
-    onPress={()=>{
-      navigation.navigate("HotUpdateDetailPage",{id:item._id,title:item.title,content:item.content,image:item.image})
-    }}
+      onPress={() => {
+        navigation.navigate("HotUpdateDetailPage", {
+          id: item._id,
+          title: item.title,
+          content: item.content,
+          image: item.image,
+        });
+      }}
       className="flex items-center"
       style={{ width: width }}
       activeOpacity={0.9}

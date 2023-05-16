@@ -6,13 +6,13 @@ import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import * as OutlineIcons from "react-native-heroicons/outline";
 import * as SolidIcons from "react-native-heroicons/solid";
 import Chat_Hot_Reward from "../components/Chat_Hot_Reward/Chat_Hot_Reward";
-import client from "../sanity";
+import client from "../../sanity";
 import { Ionicons, SimpleLineIcons } from "@expo/vector-icons";
 import TopMenu from "../components/TopMenu";
 import SideMenu from "../components/SideMenu";
 import BottomMenu from "../components/BottomMenu";
 import SnLpop from "../components/SnLpop";
-import { GlobalContext } from "../Context";
+import { GlobalContext } from "../../Context";
 import { screenHeight, screenWidth } from "../components/JobsTab";
 const HomeScreen = () => {
   const { menuValue, setMenuValue } = useContext(GlobalContext);

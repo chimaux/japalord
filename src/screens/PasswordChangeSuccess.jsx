@@ -1,10 +1,10 @@
 import { View, Text, SafeAreaView, ScrollView, Dimensions } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import React, { useContext } from "react";
-import { GlobalContext } from "../Context";
+import { GlobalContext } from "../../Context";
 import Button1 from "../components/Button1";
 
-const EmailVerificationSuccessPage = () => {
+const PasswordChangeSuccess = () => {
   const { dominantColor } = useContext(GlobalContext);
   const screenWidth = Dimensions.get("window").width;
   const screenHeight = Dimensions.get("window").height;
@@ -32,7 +32,7 @@ const EmailVerificationSuccessPage = () => {
                 color: dominantColor,
               }}
             >
-              Your emaill address has been verified
+              Your password has been change successfully
             </Text>
           </View>
 
@@ -40,7 +40,7 @@ const EmailVerificationSuccessPage = () => {
             <Button1
               buttonProps={{
                 fontBold: "bold",
-                title: "Start connecting",
+                title: "Go back to login",
                 backgroundColor: "#bd0d50",
                 color: "white",
               }}
@@ -52,4 +52,4 @@ const EmailVerificationSuccessPage = () => {
   );
 };
 
-export default EmailVerificationSuccessPage;
+export default PasswordChangeSuccess;

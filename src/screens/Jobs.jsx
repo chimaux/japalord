@@ -1,7 +1,7 @@
 import { View, Text, SafeAreaView, TextInput, Dimensions,ScrollView, FlatList } from "react-native";
 import React, { useContext, useState } from "react";
 import TopMenu from "../components/TopMenu";
-import { GlobalContext } from "../Context";
+import { GlobalContext } from "../../Context";
 import InputField from "../components/InputField";
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from '@expo/vector-icons';

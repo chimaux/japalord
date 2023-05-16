@@ -1,9 +1,9 @@
 import { View, Text, Dimensions, Image } from "react-native";
 import React, { useContext } from "react";
 import { Ionicons } from "@expo/vector-icons";
-import { GlobalContext } from "../Context";
+import { GlobalContext } from "../../Context";
 import { Feather } from "@expo/vector-icons";
-import { BG_SVG, TIMEICON } from "../assets/svgs/svg";
+import { BG_SVG, TIMEICON } from "../../assets/svgs/svg";
 import { AntDesign } from '@expo/vector-icons';
 
 export const screenWidth = Dimensions.get("window").width;

@@ -6,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import SideMenu from "../components/SideMenu";
 import SnLpop from "../components/SnLpop";
 import BottomMenu from "../components/BottomMenu";
-import { GlobalContext } from "../Context";
+import { GlobalContext } from "../../Context";
 const PremiumPackages = () => {
   const {setMenuValue, menuValue} = useContext(GlobalContext)
   const navigation = useNavigation();

@@ -8,7 +8,7 @@ import {
   } from "react-native";
   import React, { useContext } from "react";
   import { useNavigation } from "@react-navigation/native";
-  import { GlobalContext } from "../Context";
+  import { GlobalContext } from "../../Context";
   
   import OtpBox from "../components/OtpBox";
   import Button1 from "../components/Button1";

@@ -1,6 +1,6 @@
 import { View, Text, Dimensions, TouchableOpacity } from 'react-native'
 import React, { useContext } from 'react'
-import { GlobalContext } from '../Context';
+import { GlobalContext } from "../../Context";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from '@react-navigation/native';
 const GobackBTN = () => {

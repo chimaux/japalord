@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { GlobalContext } from "../Context";
+import { GlobalContext } from "../../Context";
 
 const Button1 = ({
   buttonProps: {

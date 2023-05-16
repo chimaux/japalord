@@ -8,19 +8,17 @@ import {
 } from "react-native";
 import React, { useContext } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { GlobalContext } from "../Context";
+import { GlobalContext } from "../../Context";
 
 import OtpBox from "../components/OtpBox";
 import Button1 from "../components/Button1";
 import { LinearGradient } from "expo-linear-gradient";
 import GobackBTN from "../components/GobackBTN";
 
-
 const VerifyEmailScreen = () => {
   const { dominantColor } = useContext(GlobalContext);
   const screenWidth = Dimensions.get("window").width;
   const screenHeight = Dimensions.get("window").height;
-  
 
   const emailFunction = (email) => {
     if (email.includes("@gmail.com")) {
@@ -39,29 +37,32 @@ const VerifyEmailScreen = () => {
   };
 
   return (
-    <View className={`relative bg-red-800 `}
-    style={{ height:screenHeight}}
-    >
+    <View className={`relative bg-red-800 `} style={{ height: screenHeight }}>
       <SafeAreaView
         style={{
           backgroundColor: dominantColor,
         }}
       />
       {/* background fix starts here */}
-      <View className={` bg-[${dominantColor}]`}
-      style={{ height:screenHeight/2}}
+      <View
+        className={` bg-[${dominantColor}]`}
+        style={{ height: screenHeight / 2 }}
       ></View>
-      <View className="bg-[#1A1B1C] "
-      style={{ height:screenHeight/2}}
+      <View
+        className="bg-[#1A1B1C] "
+        style={{ height: screenHeight / 2 }}
       ></View>
       {/* background fix ends here */}
-      <ScrollView 
-      className="absolute top-0 bottom-0 right-0 left-0"
-      contentContainerStyle={{ height: screenHeight, backgroundColor:dominantColor }}>
-<View className="ml-6 mt-12">
-  <GobackBTN />
-</View>
-     
+      <ScrollView
+        className="absolute top-0 bottom-0 right-0 left-0"
+        contentContainerStyle={{
+          height: screenHeight,
+          backgroundColor: dominantColor,
+        }}
+      >
+        <View className="ml-6 mt-12">
+          <GobackBTN />
+        </View>
 
         <Text className="text-center text-white text-4xl font-bold tracking-wider my-10">
           Verify your email
@@ -97,7 +98,9 @@ const VerifyEmailScreen = () => {
             />
           </View>
 
-          <Text className="text-center text-[#dcdada] my-8 text-xl">Send code again 00:20</Text>
+          <Text className="text-center text-[#dcdada] my-8 text-xl">
+            Send code again 00:20
+          </Text>
         </LinearGradient>
       </ScrollView>
     </View>
