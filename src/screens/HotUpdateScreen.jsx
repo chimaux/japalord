@@ -110,7 +110,7 @@ const HotUpdateScreen = () => {
         {topOrOtherNews == true ? (
           <ScrollView
             className=" bg-[#FFFBEB]"
-            contentContainerStyle={{ paddingBottom: 120 }}
+            // contentContainerStyle={{ paddingBottom: 120 }}
           >
             <Text
               className="text-[#6E002B] text-2xl mx-4 my-2"
@@ -146,7 +146,10 @@ const HotUpdateScreen = () => {
             </TouchableOpacity>
           </ScrollView>
         ) : (
-          <View className=" bg-[#FFFBEB]" style={{ paddingBottom: 365 }}>
+          <View
+            className="relative bg-[#FFFBEB]"
+            style={{ paddingBottom: 200 }}
+          >
             <Text
               className="text-[#6E002B] text-2xl mx-4 mt-2 mb-2"
               style={{ fontWeight: "bold" }}
@@ -159,7 +162,7 @@ const HotUpdateScreen = () => {
               }}
             />
             <TouchableOpacity
-              className="my-2 mx-4 bg-[#6e002a6a] w-[40px] h-[40px] flex items-center justify-center rounded-full "
+              className="z-50 bottom-[190px] absolute my-2 mx-4 bg-[#6e002a6a] w-[40px] h-[40px] flex items-center justify-center rounded-full "
               onPress={() => setTopOrOtherNews(true)}
             >
               <SolidIcons.ChevronDoubleLeftIcon
