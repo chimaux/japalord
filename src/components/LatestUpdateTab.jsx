@@ -94,16 +94,16 @@ const LatestUpdateTab = ({ props: { data } }) => {
                 }}
                 className=" rounded-xl"
                 resizeMode="cover"
-                style={{ width: "100%", height: 150 }}
+                style={{ width: "100%", height: 100 }}
               />
             </View>
 
-            <View className="w-[59%] h-[150px] px-2 py-2">
+            <View className="w-[59%] h-[100px] px-2 py-2">
               <View className="text-white flex-1 mb-2 flex-row flex-wrap">
                 <Text
                   className="text-white"
                   style={{ fontWeight: "bold" }}
-                  numberOfLines={4}
+                  numberOfLines={3}
                 >
                   {items.title}
                 </Text>
