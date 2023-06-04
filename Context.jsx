@@ -18,12 +18,12 @@ const Provider = ({ children }) => {
   //MY COORS START HERE
   const dominantColor = "#6e002b";
   //MY COLORS ENDS HERE
-  const signupFunction = () => {
-    console.log("navigation");
-  };
+  // const signupFunction = () => {
+  //   console.log("navigation");
+  // };
 
   const store = {
-    signupFunction,
+    // signupFunction,
     dominantColor,
     truncateText,
     menuValue,

@@ -1,5 +1,5 @@
-import React, {useContext} from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import React, { useContext } from "react";
+import { View, Text, TouchableOpacity, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { GlobalContext } from "../../Context";
 
@@ -15,35 +15,30 @@ const Button1 = ({
     fontBold,
     bborder,
     pbottom,
-    signupFunction, name
+    signupFunction,
+    name,
+    loading,
   },
 }) => {
-  const {setMenuValue} = useContext(GlobalContext)
-  const navigation = useNavigation()
+  const { setMenuValue } = useContext(GlobalContext);
+  const navigation = useNavigation();
   return (
     <TouchableOpacity
       onPress={() => {
         if (title === "Signup") {
-          navigation.navigate("VerifyEmailScreen")
           signupFunction();
-        }
-        else if(title === "Verify"){
-            navigation.navigate("EmailVerificationSuccessPage")
-        }
-        else if(title === "Get code"){
-            navigation.navigate("ForgetPasscodeVerify")
-        }
-        else if(title === "Change Password"){
-            navigation.navigate("ResetPasswordPage")
-        }
-        else if(title === "Reset password"){
-            navigation.navigate("PasswordChangeSuccess")
-        }
-        else if(name === "PremiumPackages"){
-            navigation.navigate("PremiumPackages")
-            setMenuValue("hidden");
-        }
-        else {
+        } else if (title === "Verify") {
+          navigation.navigate("EmailVerificationSuccessPage");
+        } else if (title === "Get code") {
+          navigation.navigate("ForgetPasscodeVerify");
+        } else if (title === "Change Password") {
+          navigation.navigate("ResetPasswordPage");
+        } else if (title === "Reset password") {
+          navigation.navigate("PasswordChangeSuccess");
+        } else if (name === "PremiumPackages") {
+          navigation.navigate("PremiumPackages");
+          setMenuValue("hidden");
+        } else {
           console.log("login");
         }
       }}
@@ -63,12 +58,17 @@ const Button1 = ({
       ]}
     >
       {icon ? <Text className={`${pright} ${mleft} mt-1`}>{icon}</Text> : ""}
-      <Text
-        className="text-center text-xl tracking-wider"
-        style={{ color: color, fontWeight: fontBold }}
-      >
-        {title}
-      </Text>
+
+      {loading ? (
+        <ActivityIndicator color="#fff" size={30} />
+      ) : (
+        <Text
+          className="text-center text-xl tracking-wider"
+          style={{ color: color, fontWeight: fontBold }}
+        >
+          {title}
+        </Text>
+      )}
     </TouchableOpacity>
   );
 };

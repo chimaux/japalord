@@ -1,36 +1,43 @@
-import { View, Text, Dimensions, Image } from "react-native";
+import { View, Text, Dimensions, Image, TouchableOpacity } from "react-native";
 import React, { useContext } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { GlobalContext } from "../../Context";
 import { Feather } from "@expo/vector-icons";
 import { BG_SVG, TIMEICON } from "../../assets/svgs/svg";
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 export const screenWidth = Dimensions.get("window").width;
 export const screenHeight = Dimensions.get("window").height;
 
 const JobsTab = () => {
+  const navigation = useNavigation();
+
   const { truncateText } = useContext(GlobalContext);
 
   return (
     <View>
-      <BG_SVG>
-        <View className=" absolute right-0 top-1 w-[none] my-auto mx-auto ">
-          <View
-            className="bg-[#101820]  flex items-center"
-            style={{
-              borderRadius: 27,
-            }}
-          >
-            <View className=" flex-row items-center px-[10px] py-2">
-              <Text className="text-[#FFFBEB] font-semibold tracking-wider">
-                Apply
-              </Text>
-              <Feather name="arrow-up-right" size={24} color="#FFFBEB" />
-            </View>
+      <TouchableOpacity
+        className=" absolute right-0 top-1 w-[none] my-auto mx-auto "
+        onPress={() => {
+          navigation.navigate("JobDetails");
+        }}
+      >
+        <View
+          className="bg-[#101820]  flex items-center"
+          style={{
+            borderRadius: 27,
+          }}
+        >
+          <View className=" flex-row items-center px-[10px] py-2">
+            <Text className="text-[#FFFBEB] font-semibold tracking-wider">
+              Apply
+            </Text>
+            <Feather name="arrow-up-right" size={24} color="#FFFBEB" />
           </View>
         </View>
-
+      </TouchableOpacity>
+      <BG_SVG>
         <View
           className="p-4"
           style={{
@@ -46,12 +53,11 @@ const JobsTab = () => {
               className=" h-16 bg-[#6E002B] rounded-lg"
               style={{
                 width: screenWidth * 0.17,
-                alignItems:"center",
-                justifyContent:"center"
+                alignItems: "center",
+                justifyContent: "center",
               }}
             >
-        <AntDesign name="google" size={40} color="#FFFBEB" />
-
+              <AntDesign name="google" size={40} color="#FFFBEB" />
             </View>
             <View
               className="ml-2 "
@@ -109,25 +115,19 @@ const JobsTab = () => {
           zIndex: 10,
           borderBottomStartRadius: 30,
           borderBottomEndRadius: 30,
-          flexDirection:"row",
-          alignItems:"center",
-          justifyContent:"space-between",
-          paddingHorizontal:20
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+          paddingHorizontal: 20,
         }}
       >
-
-
-
-        <View className="flex-row items-center  h-[70px]"
-        >
-   <View>
-   <TIMEICON/>
-   </View>
-        <Text className="font-semibold ml-2">Posted 2 days ago</Text>
+        <View className="flex-row items-center  h-[70px]">
+          <View>
+            <TIMEICON color="#000" />
+          </View>
+          <Text className="font-semibold ml-2">Posted 2 days ago</Text>
         </View>
-        <Text className="font-semibold text-lg">
-        $95K/yr
-        </Text>
+        <Text className="font-semibold text-lg">$95K/yr</Text>
       </View>
     </View>
   );

@@ -27,9 +27,12 @@ import Notification from "../screens/Notification";
 
 import DirectMessage from "../screens/DirectMessage";
 import { BottomTab } from "./BottomTab";
+import JobDetails from "../screens/JobDetails";
+
+// import { MyDrawer } from "./SideDrawer";
 
 //const Stack = createNativeStackNavigator();
- const Stack = createStackNavigator();
+const Stack = createStackNavigator();
 
 const NavigationStack = () => {
   // const [isAppFirstLaunched, setIsAppFirstLaunched] = useState(null);
@@ -78,6 +81,7 @@ const NavigationStack = () => {
       <Stack.Screen name="PasswordChangeSuccess" component={PasswordChangeSuccess} />
       <Stack.Screen name="Notification" component={Notification} />
       <Stack.Screen name="DirectMessage" component={DirectMessage} />
+      <Stack.Screen name="JobDetails" component={JobDetails} />
 
 
     </Stack.Navigator>
