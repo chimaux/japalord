@@ -3,8 +3,41 @@ import { AntDesign } from "@expo/vector-icons";
 import React, { useContext } from "react";
 import { GlobalContext } from "../../Context";
 import Button1 from "../components/Button1";
+import { Platform } from "react-native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { HeaderBackButton } from "@react-navigation/stack";
 
 const EmailVerificationSuccessPage = () => {
+  const navigation = useNavigation();
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const disableSwipeGesture = () => {
+        // Disable swipe gesture for the screen
+        navigation.setOptions({
+          gestureEnabled: false,
+        });
+      };
+
+      navigation.addListener("beforeRemove", (e) => {
+        e.preventDefault();
+      });
+
+      disableSwipeGesture();
+
+      return () => {
+        // Re-enable swipe gesture when leaving the screen
+        navigation.setOptions({
+          gestureEnabled: true,
+        });
+      };
+    }, [])
+  );
+
+  const navigateToLogin = () => {
+    navigation.navigate("Login");
+  };
+
   const { dominantColor } = useContext(GlobalContext);
   const screenWidth = Dimensions.get("window").width;
   const screenHeight = Dimensions.get("window").height;
@@ -17,7 +50,6 @@ const EmailVerificationSuccessPage = () => {
           justifyContent: "center",
           width: screenWidth,
           height: screenHeight,
-          
         }}
       >
         <View className="w-full">
@@ -43,6 +75,7 @@ const EmailVerificationSuccessPage = () => {
                 title: "Start connecting",
                 backgroundColor: "#bd0d50",
                 color: "white",
+                functionExec: navigateToLogin,
               }}
             />
           </View>

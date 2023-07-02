@@ -4,7 +4,7 @@ export const GlobalContext = React.createContext();
 const Provider = ({ children }) => {
   // side menu nav
   const [menuValue, setMenuValue] = useState("hidden");
-
+  const [screenData, setScreenData] = useState("");
   // Trucate text fuction starts here
   const truncateText = (text, maxLength) => {
     if (text.length > maxLength) {
@@ -28,6 +28,8 @@ const Provider = ({ children }) => {
     truncateText,
     menuValue,
     setMenuValue,
+    screenData,
+    setScreenData,
   };
 
   return (

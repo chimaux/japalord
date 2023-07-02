@@ -5,35 +5,83 @@ import {
   ScrollView,
   TouchableOpacity,
   Dimensions,
+  StyleSheet,
 } from "react-native";
-import React, { useContext } from "react";
-import { useNavigation } from "@react-navigation/native";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { GlobalContext } from "../../Context";
 
-import OtpBox from "../components/OtpBox";
+import OtpBox, { screenHeight, screenWidth } from "../components/OtpBox";
 import Button1 from "../components/Button1";
 import { LinearGradient } from "expo-linear-gradient";
 import GobackBTN from "../components/GobackBTN";
 
+import {
+  CodeField,
+  Cursor,
+  useBlurOnFulfill,
+  useClearByFocusCell,
+} from "react-native-confirmation-code-field";
+import { Alert } from "react-native";
+import axios from "axios";
+
+const CELL_COUNT = 4;
+
 const VerifyEmailScreen = () => {
+  const navigation = useNavigation();
+  const route = useRoute();
+
+  const [pageData, setPageData] = useState({});
+
+  // ACTIVITY INDICATOR
+  const [loading, setLoading] = useState(null);
+  // console.log("chi chi was here", pageData);
+
+  useEffect(() => {
+    setPageData(route.params);
+  }, []);
+
   const { dominantColor } = useContext(GlobalContext);
   const screenWidth = Dimensions.get("window").width;
   const screenHeight = Dimensions.get("window").height;
 
-  const emailFunction = (email) => {
-    if (email.includes("@gmail.com")) {
-      const splitEmail = email.replace(/@gmail.com/, "");
-      const numSplit = Math.floor(splitEmail.length / 2);
-      const sliceMe = splitEmail.slice(0, numSplit);
-      const newEmail = `${sliceMe}*****@gmail.com`;
-      return newEmail;
-    } else if (email.includes("@yahoo.com")) {
-      const splitEmail = email.replace(/@yahoo.com/, "");
-      const numSplit = Math.floor(splitEmail.length / 2);
-      const sliceMe = splitEmail.slice(0, numSplit);
-      const newEmail = `${sliceMe}*****@yahoo.com`;
-      return newEmail;
+  const [value, setValue] = useState("");
+  const ref = useBlurOnFulfill({ value, cellCount: CELL_COUNT });
+  const [props, getCellOnLayoutHandler] = useClearByFocusCell({
+    value,
+    setValue,
+  });
+
+  const verifyEmail = async () => {
+    // const verifyEmail = () => {
+    setLoading(true);
+    try {
+      console.log(value, "chipanda");
+      const getResponse = await axios.post(
+        "https://japa-app.onrender.com/api/v1/users/auths/verify-email",
+        {
+          code: value,
+        }
+      );
+      if (getResponse.data.status === true) {
+        console.log(getResponse.data.status + " " + getResponse.data.message);
+        navigation.navigate("EmailVerificationSuccessPage");
+      }
+    } catch (e) {
+      Alert.alert("Try again", e.message, [
+        {
+          text: "Ok",
+        },
+      ]);
+    } finally {
+      setLoading(false);
     }
+
+    // if (pageData.v1 === value) {
+    //   console.log(value + " is correct");
+    // } else {
+    //   console.log(value + " value is wrong");
+    // }
   };
 
   return (
@@ -72,7 +120,7 @@ const VerifyEmailScreen = () => {
         </Text>
 
         <Text className="my-2 mx-auto text-center text-white text-xl tracking-wider">
-          {emailFunction("chima@yahoo.com")}
+          {pageData.truncatedEmail}
         </Text>
 
         <LinearGradient
@@ -81,10 +129,26 @@ const VerifyEmailScreen = () => {
           locations={[0, 0.5]}
         >
           <View className="my-12 flex-row  justify-center">
-            <OtpBox />
-            <OtpBox />
-            <OtpBox />
-            <OtpBox />
+            <CodeField
+              ref={ref}
+              {...props}
+              // Use `caretHidden={false}` when users can't paste a text value, because context menu doesn't appear
+              value={value}
+              onChangeText={setValue}
+              cellCount={CELL_COUNT}
+              rootStyle={styles.codeFieldRoot}
+              keyboardType="default"
+              textContentType="oneTimeCode"
+              renderCell={({ index, symbol, isFocused }) => (
+                <Text
+                  key={index}
+                  style={[styles.cell, isFocused && styles.focusCell]}
+                  onLayout={getCellOnLayoutHandler(index)}
+                >
+                  {symbol || (isFocused ? <Cursor /> : null)}
+                </Text>
+              )}
+            />
           </View>
 
           <View className="mx-4">
@@ -94,6 +158,7 @@ const VerifyEmailScreen = () => {
                 title: "Verify",
                 backgroundColor: "#bd0d50",
                 color: "white",
+                functionExec: verifyEmail,
               }}
             />
           </View>
@@ -106,5 +171,25 @@ const VerifyEmailScreen = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  root: { flex: 1, padding: 20 },
+  title: { textAlign: "center", fontSize: 30 },
+  codeFieldRoot: { marginTop: 0 },
+  cell: {
+    width: screenWidth * 0.15,
+    height: screenHeight * 0.08,
+    lineHeight: screenHeight * 0.08,
+    backgroundColor: "#fff",
+    fontSize: 24,
+    borderRadius: 5,
+    overflow: "hidden",
+    marginHorizontal: 10,
+    textAlign: "center",
+  },
+  focusCell: {
+    backgroundColor: "#cccccc",
+  },
+});
 
 export default VerifyEmailScreen;

@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Dimensions } from "react-native";
+import { Dimensions, Pressable } from "react-native";
 import HomeScreen from "../screens/HomeScreen";
 import CommunityChat from "../screens/CommunityChat";
 import DirectMessage from "../screens/DirectMessage";
@@ -12,8 +12,10 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import NavigationStack from "./NavigationStack";
 export const deviceWidth = Dimensions.get("window").width;
 import HomeStack from "./HomeStack";
-
-
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { GlobalContext } from "../../Context";
+import { useContext } from "react";
+import backBack from "../components/backBack";
 
 console.log(deviceWidth);
 export const height = Dimensions.get("window").height;
@@ -21,6 +23,9 @@ const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 export const BottomTab = () => {
+  const navigation = useNavigation();
+  const { screenData, setScreenData } = useContext(GlobalContext);
+  console.log(screenData, "1");
   return (
     <Tab.Navigator
       screenOptions={{
@@ -31,16 +36,6 @@ export const BottomTab = () => {
           borderTopWidth: 1,
           borderTopColor: "#6E002B",
           height: 100,
-          //   paddingHorizontal: 5,
-          //   shadowColor: "blue",
-          //   shadowOffset: {
-          //     width: 0,
-          //     height: -1,
-          //   },
-          //   shadowOpacity: 0.22,
-          //   shadowRadius: 1,
-
-          //   elevation: 1,
         },
       }}
     >
@@ -79,6 +74,7 @@ export const BottomTab = () => {
           },
         }}
       />
+
       <Tab.Screen
         name="CommunityChat"
         component={CommunityChat}

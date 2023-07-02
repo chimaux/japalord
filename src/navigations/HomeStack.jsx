@@ -4,7 +4,7 @@ import React, { useLayoutEffect, useState, useEffect } from "react";
 import { View, Text, ScrollView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import LogingScreen from "../screens/LogingScreen";
 import RegisterScreen from "../screens/RegisterScreen";
@@ -28,7 +28,6 @@ import Notification from "../screens/Notification";
 
 import DirectMessage from "../screens/DirectMessage";
 
-
 const Stack = createNativeStackNavigator();
 // const Stack = createStackNavigator();
 
@@ -44,24 +43,19 @@ const HomeStack = () => {
   //   }
   // }, []);
   return (
-
     // isAppFirstLaunched != null && (
-
 
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       {/* isAppFirstLaunched */}
       {false && (
-        <Stack.Screen
-          name="OnboardingScreen"
-          component={OnboardingScreen}
-        />
+        <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
       )}
-      
-      <Stack.Screen name="Home" component={HomeScreen} />
 
+      <Stack.Screen name="Home" component={HomeScreen} />
+      {/* 
       <Stack.Screen name="LogRegScreen" component={LogRegScreen} />
       <Stack.Screen name="Login" component={LogingScreen} />
-      <Stack.Screen name="Register" component={RegisterScreen} />
+      <Stack.Screen name="Register" component={RegisterScreen} /> */}
       <Stack.Screen name="UpdateScreen" component={HotUpdateScreen} />
 
       <Stack.Screen name="CommunityChat" component={CommunityChat} />
@@ -69,26 +63,30 @@ const HomeStack = () => {
       <Stack.Screen name="Documents" component={Documents} />
       <Stack.Screen name="PremiumPackages" component={PremiumPackages} />
       <Stack.Screen name="Jobs" component={Jobs} />
-      <Stack.Screen name="HotUpdateDetailPage" component={HotUpdateDetailPage} />
-      <Stack.Screen name="VerifyEmailScreen" component={VerifyEmailScreen} />
-      <Stack.Screen name="EmailVerificationSuccessPage" component={EmailVerificationSuccessPage} />
+      <Stack.Screen
+        name="HotUpdateDetailPage"
+        component={HotUpdateDetailPage}
+      />
+      {/* <Stack.Screen name="VerifyEmailScreen" component={VerifyEmailScreen} />
+      <Stack.Screen
+        name="EmailVerificationSuccessPage"
+        component={EmailVerificationSuccessPage}
+      />
       <Stack.Screen name="ForgotPasswordPage" component={ForgotPasswordPage} />
-      <Stack.Screen name="ForgetPasscodeVerify" component={ForgetPasscodeVerify} />
-      <Stack.Screen name="ResetPasswordPage" component={ResetPasswordPage} />
-      <Stack.Screen name="PasswordChangeSuccess" component={PasswordChangeSuccess} />
+      <Stack.Screen
+        name="ForgetPasscodeVerify"
+        component={ForgetPasscodeVerify}
+      /> */}
+      {/* <Stack.Screen name="ResetPasswordPage" component={ResetPasswordPage} />
+      <Stack.Screen
+        name="PasswordChangeSuccess"
+        component={PasswordChangeSuccess}
+      /> */}
       <Stack.Screen name="Notification" component={Notification} />
       <Stack.Screen name="DirectMessage" component={DirectMessage} />
-
-
     </Stack.Navigator>
-
-
 
     // )
   );
-
-
-
-
-}
-export default HomeStack
+};
+export default HomeStack;

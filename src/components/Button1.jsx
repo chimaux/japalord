@@ -15,7 +15,7 @@ const Button1 = ({
     fontBold,
     bborder,
     pbottom,
-    signupFunction,
+    functionExec,
     name,
     loading,
   },
@@ -25,22 +25,7 @@ const Button1 = ({
   return (
     <TouchableOpacity
       onPress={() => {
-        if (title === "Signup") {
-          signupFunction();
-        } else if (title === "Verify") {
-          navigation.navigate("EmailVerificationSuccessPage");
-        } else if (title === "Get code") {
-          navigation.navigate("ForgetPasscodeVerify");
-        } else if (title === "Change Password") {
-          navigation.navigate("ResetPasswordPage");
-        } else if (title === "Reset password") {
-          navigation.navigate("PasswordChangeSuccess");
-        } else if (name === "PremiumPackages") {
-          navigation.navigate("PremiumPackages");
-          setMenuValue("hidden");
-        } else {
-          console.log("login");
-        }
+        functionExec();
       }}
       className={` ${bborder} ${width} rounded  text-center ${pbottom} py-3`}
       style={[
