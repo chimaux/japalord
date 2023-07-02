@@ -20,6 +20,7 @@ import { GlobalContext } from "../../Context";
 import CountryPicker from "react-native-country-picker-modal";
 
 import axios from "axios";
+import { baseUrl } from "../constant";
 
 function RegisterScreen() {
   const image = { img: require("../images/close.png") };
@@ -44,13 +45,12 @@ function RegisterScreen() {
   // ACTIVITY INDICATOR
   const [loading, setLoading] = useState(null);
 
-  const base_url = "https://japa-app.onrender.com";
   const registerUser = async () => {
     let newNumber = phoneNumber;
     if (phoneNumber.startsWith(0)) {
       newNumber = phoneNumber.substring(1, phoneNumber.length);
     }
-    const newNumber2 = `+${callingCode}${newNumber}`;
+    const newNumber2 = `${callingCode}${newNumber}`;
     setLoading(true);
     try {
       const getResponse = await axios.post(
@@ -62,12 +62,44 @@ function RegisterScreen() {
           password,
         }
       );
-      if (getResponse.data.data.user) {
-        console.log("chima", getResponse.data.data.user);
+
+      const userData = getResponse.data.data.user;
+      if (userData) {
+        console.log("fish", getResponse);
+        console.log(
+          "----------------------------------------------------------------------------------------------"
+        );
+        console.log("chima", userData);
         setName("");
         setEmail("");
         setPassword("");
+        setPhoneNumber("");
         setConfirmPassword("");
+        // HIDE SOME OF THE CHARACTERS IN THE EMAIL STARTS HERE
+        const emailFunction = (email) => {
+          if (email !== "undefined") {
+            if (email.includes("@gmail.com")) {
+              const splitEmail = email.replace(/@gmail.com/, "");
+              const numSplit = Math.floor(splitEmail.length / 2);
+              const sliceMe = splitEmail.slice(0, numSplit);
+              const newEmail = `${sliceMe}*****@gmail.com`;
+              return newEmail;
+            } else if (email.includes("@yahoo.com")) {
+              const splitEmail = email.replace(/@yahoo.com/, "");
+              const numSplit = Math.floor(splitEmail.length / 2);
+              const sliceMe = splitEmail.slice(0, numSplit);
+              const newEmail = `${sliceMe}*****@yahoo.com`;
+              return newEmail;
+            }
+          }
+        };
+        const truncatedEmail = emailFunction(userData.email);
+        console.log(truncatedEmail);
+        console.log(userData.email);
+        // HIDE SOME OF THE CHARACTERS IN THE EMAIL ENDS HERE
+
+        const verifyToken = userData.verifyToken;
+
         Alert.alert(
           "Registration successful",
           "Verification code sent successfully, continue to verify your email",
@@ -75,20 +107,19 @@ function RegisterScreen() {
             {
               text: "Continue",
               onPress: () => {
-                navigation.navigate("VerifyEmailScreen");
+                navigation.navigate("VerifyEmailScreen", {
+                  verifyToken,
+                  truncatedEmail,
+                });
               },
             },
           ]
         );
       }
     } catch (e) {
-      console.log(e);
       Alert.alert("Try again", e.message, [
         {
           text: "Ok",
-          // onPress: () => {
-          //   navigation.navigate("VerifyEmailScreen");
-          // },
         },
       ]);
     } finally {
@@ -120,7 +151,7 @@ function RegisterScreen() {
             </Text>
 
             <View
-              className={`w-full "mb-4"  rounded`}
+              className={`w-full   rounded`}
               style={{
                 backgroundColor: "white",
               }}
@@ -148,7 +179,7 @@ function RegisterScreen() {
             </Text>
 
             <View
-              className={`w-full "mb-4"  rounded`}
+              className={`w-full   rounded`}
               style={{
                 backgroundColor: "white",
               }}
@@ -193,7 +224,7 @@ function RegisterScreen() {
                 <AntDesign name="down" size={24} color="#c5c5c5" />
               </View>
               <View
-                className={`w-[76%] "mb-4"  rounded`}
+                className={`w-[76%]   rounded`}
                 style={{
                   backgroundColor: "#fff",
                 }}
@@ -223,7 +254,7 @@ function RegisterScreen() {
             </Text>
 
             <View
-              className={`w-full "mb-4"  rounded`}
+              className={`w-full   rounded`}
               style={{
                 backgroundColor: "white",
               }}
@@ -250,7 +281,7 @@ function RegisterScreen() {
             </Text>
 
             <View
-              className={`w-full "mb-4"  rounded`}
+              className={`w-full   rounded`}
               style={{
                 backgroundColor: "white",
               }}
@@ -299,7 +330,7 @@ function RegisterScreen() {
               backgroundColor: "#bd0d50",
               color: "white",
               loading: loading,
-              signupFunction: registerUser,
+              functionExec: registerUser,
             }}
           />
           {/* SIGN UP BUTTON */}

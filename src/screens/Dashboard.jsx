@@ -6,7 +6,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TopMenu from "../components/TopMenu";
 import SideMenu from "../components/SideMenu";
 import BottomMenu from "../components/BottomMenu";
@@ -22,9 +22,22 @@ import DashboardTab from "../components/DashboardTab";
 import Button1 from "../components/Button1";
 import { GlobalContext } from "../../Context";
 import { BottomTab } from "../navigations/BottomTab";
+import { useRoute } from "@react-navigation/native";
 
 const Dashboard = () => {
-  const { menuValue, setMenuValue } = useContext(GlobalContext);
+  const route = useRoute();
+  const { menuValue, setMenuValue, screenData, setScreenData } =
+    useContext(GlobalContext);
+
+  const getCurrentRouteName = () => {
+    const myRoute = route.name;
+    setScreenData(myRoute);
+  };
+  useEffect(() => {
+    getCurrentRouteName();
+  }, []);
+  console.log(screenData);
+
   const [menuValue2, setMenuValue2] = useState("hidden");
 
   const image = { img: require("../images/Alice.png") };

@@ -28,6 +28,7 @@ import Notification from "../screens/Notification";
 import DirectMessage from "../screens/DirectMessage";
 import { BottomTab } from "./BottomTab";
 import JobDetails from "../screens/JobDetails";
+import backBack from "../components/backBack";
 
 // import { MyDrawer } from "./SideDrawer";
 
@@ -74,7 +75,9 @@ const NavigationStack = () => {
       <Stack.Screen name="Jobs" component={Jobs} />
       <Stack.Screen name="HotUpdateDetailPage" component={HotUpdateDetailPage} />
       <Stack.Screen name="VerifyEmailScreen" component={VerifyEmailScreen} />
-      <Stack.Screen name="EmailVerificationSuccessPage" component={EmailVerificationSuccessPage} />
+      <Stack.Screen
+        name="EmailVerificationSuccessPage"
+        component={EmailVerificationSuccessPage} />
       <Stack.Screen name="ForgotPasswordPage" component={ForgotPasswordPage} />
       <Stack.Screen name="ForgetPasscodeVerify" component={ForgetPasscodeVerify} />
       <Stack.Screen name="ResetPasswordPage" component={ResetPasswordPage} />
@@ -82,6 +85,7 @@ const NavigationStack = () => {
       <Stack.Screen name="Notification" component={Notification} />
       <Stack.Screen name="DirectMessage" component={DirectMessage} />
       <Stack.Screen name="JobDetails" component={JobDetails} />
+
 
 
     </Stack.Navigator>
