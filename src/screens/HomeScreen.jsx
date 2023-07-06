@@ -1,4 +1,8 @@
-import { useNavigation, useRoute } from "@react-navigation/native";
+import {
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 import { setStatusBarTranslucent } from "expo-status-bar";
 import React, { useLayoutEffect, useState, useEffect, useContext } from "react";
 import { TouchableOpacity } from "react-native";
@@ -19,8 +23,13 @@ const HomeScreen = () => {
   const route = useRoute();
   const navigation = useNavigation();
 
-  const { menuValue, setMenuValue, screenData, setScreenData } =
+  const { menuValue, setMenuValue, screenData, setScreenData, pageData } =
     useContext(GlobalContext);
+
+  const [menuValue2, setMenuValue2] = useState("hidden");
+  const [welcomeValue, setWelcomeValue] = useState([]);
+  const [categoryValue, setCategoryValue] = useState([]);
+  const [categoryValue2, setCategoryValue2] = useState([]);
 
   const getCurrentRouteName = () => {
     const myRoute = route.name;
@@ -38,7 +47,6 @@ const HomeScreen = () => {
     });
   }, []);
 
-  const [welcomeValue, setWelcomeValue] = useState([]);
   useEffect(() => {
     client
       .fetch(
@@ -53,9 +61,6 @@ const HomeScreen = () => {
         setWelcomeValue(data);
       });
   }, []);
-
-  const [categoryValue, setCategoryValue] = useState([]);
-  const [categoryValue2, setCategoryValue2] = useState([]);
 
   useEffect(() => {
     client
@@ -90,7 +95,46 @@ const HomeScreen = () => {
     setStatusBarTranslucent(false);
   }, []);
 
-  const [menuValue2, setMenuValue2] = useState("hidden");
+  // PREVENT SWIPE BACK STARTS HERE
+  useFocusEffect(
+    React.useCallback(() => {
+      const disableSwipeGesture = () => {
+        // Disable swipe gesture for the screen
+        navigation.setOptions({
+          gestureEnabled: false,
+        });
+      };
+
+      navigation.addListener("beforeRemove", (e) => {
+        e.preventDefault();
+      });
+
+      disableSwipeGesture();
+
+      return () => {
+        // Re-enable swipe gesture when leaving the screen
+        navigation.setOptions({
+          gestureEnabled: true,
+        });
+      };
+    }, [])
+  );
+  // PREVENT SWIPE BACK ENDS HERE
+
+  // USER DATA STARTS HERE
+
+  if (pageData !== null) {
+    console.log("----------DATA STARTS HERE------------");
+    console.log(pageData);
+    console.log("----------DATA ENDS HERE------------");
+  } else {
+    console.log("----------DATA STARTS HERE------------");
+    console.log("No user data");
+    console.log("----------DATA ENDS HERE------------");
+  }
+
+  // USER DATA ENDS HERE
+
   return (
     <>
       <SafeAreaView

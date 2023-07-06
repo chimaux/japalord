@@ -24,6 +24,7 @@ const Stack = createNativeStackNavigator();
 
 export const BottomTab = () => {
   const navigation = useNavigation();
+
   const { screenData, setScreenData } = useContext(GlobalContext);
   console.log(screenData, "1");
   return (

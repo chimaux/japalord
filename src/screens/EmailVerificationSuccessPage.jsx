@@ -10,6 +10,7 @@ import { HeaderBackButton } from "@react-navigation/stack";
 const EmailVerificationSuccessPage = () => {
   const navigation = useNavigation();
 
+  // PREVENT SWIPE BACK STARTS HERE
   useFocusEffect(
     React.useCallback(() => {
       const disableSwipeGesture = () => {
@@ -33,6 +34,7 @@ const EmailVerificationSuccessPage = () => {
       };
     }, [])
   );
+  // PREVENT SWIPE BACK ENDS HERE
 
   const navigateToLogin = () => {
     navigation.navigate("Login");

@@ -8,7 +8,11 @@ import {
   StyleSheet,
 } from "react-native";
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import {
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 import { GlobalContext } from "../../Context";
 
 import OtpBox, { screenHeight, screenWidth } from "../components/OtpBox";
@@ -32,10 +36,23 @@ const VerifyEmailScreen = () => {
   const route = useRoute();
 
   const [pageData, setPageData] = useState({});
-
+  const [countdown, setCountdown] = useState(20);
+  const [canResend, setCanResend] = useState(false);
   // ACTIVITY INDICATOR
   const [loading, setLoading] = useState(null);
-  // console.log("chi chi was here", pageData);
+
+  useEffect(() => {
+    let timer;
+    if (countdown > 0) {
+      timer = setInterval(() => {
+        setCountdown((prevCountdown) => prevCountdown - 1);
+      }, 1000);
+    } else {
+      setCanResend(true);
+    }
+
+    return () => clearInterval(timer);
+  }, [countdown]);
 
   useEffect(() => {
     setPageData(route.params);
@@ -52,6 +69,33 @@ const VerifyEmailScreen = () => {
     setValue,
   });
 
+  // PREVENT SWIPE BACK STARTS HERE
+  useFocusEffect(
+    React.useCallback(() => {
+      const disableSwipeGesture = () => {
+        // Disable swipe gesture for the screen
+        navigation.setOptions({
+          gestureEnabled: false,
+        });
+      };
+
+      navigation.addListener("beforeRemove", (e) => {
+        e.preventDefault();
+      });
+
+      disableSwipeGesture();
+
+      return () => {
+        // Re-enable swipe gesture when leaving the screen
+        navigation.setOptions({
+          gestureEnabled: true,
+        });
+      };
+    }, [])
+  );
+  // PREVENT SWIPE BACK ENDS HERE
+
+  // VERIFY EMAIL FUNCTION STARTS HERE
   const verifyEmail = async () => {
     // const verifyEmail = () => {
     setLoading(true);
@@ -83,6 +127,41 @@ const VerifyEmailScreen = () => {
     //   console.log(value + " value is wrong");
     // }
   };
+  // VERIFY EMAIL FUNCTION ENDS HERE
+
+  // RESEND VERIFICATION STARTS HERE
+  const resendVerificationCode = async () => {
+    // const verifyEmail = () => {
+    setLoading(true);
+    try {
+      console.log(pageData.fullEmail, "chipanda");
+      const getResponse = await axios.post(
+        "https://japa-app.onrender.com/api/v1/users/auths/resend-verification",
+        {
+          email: pageData.fullEmail,
+        }
+      );
+      if (getResponse.data.status === true) {
+        console.log(getResponse.data);
+        Alert.alert("Success", "Verification code sent successfully");
+      }
+    } catch (e) {
+      Alert.alert("Try again", e.message, [
+        {
+          text: "Ok",
+        },
+      ]);
+    } finally {
+      setLoading(false);
+    }
+
+    // if (pageData.v1 === value) {
+    //   console.log(value + " is correct");
+    // } else {
+    //   console.log(value + " value is wrong");
+    // }
+  };
+  // RESEND VERIFICATION ENDS HERE
 
   return (
     <View className={`relative bg-red-800 `} style={{ height: screenHeight }}>
@@ -159,13 +238,25 @@ const VerifyEmailScreen = () => {
                 backgroundColor: "#bd0d50",
                 color: "white",
                 functionExec: verifyEmail,
+                loading: loading,
               }}
             />
           </View>
 
-          <Text className="text-center text-[#dcdada] my-8 text-xl">
-            Send code again 00:20
-          </Text>
+          {canResend ? (
+            <TouchableOpacity>
+              <Text
+                className="text-center text-green-500 cursor-pointer my-8 text-xl"
+                onPress={resendVerificationCode}
+              >
+                Send code again 00:{countdown}
+              </Text>
+            </TouchableOpacity>
+          ) : (
+            <Text className="text-center text-[#dcdada] my-8 text-xl cursor-not-allowed">
+              Send code again 00:{countdown}
+            </Text>
+          )}
         </LinearGradient>
       </ScrollView>
     </View>

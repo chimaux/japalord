@@ -5,6 +5,7 @@ const Provider = ({ children }) => {
   // side menu nav
   const [menuValue, setMenuValue] = useState("hidden");
   const [screenData, setScreenData] = useState("");
+  const [pageData, setPageData] = useState(null);
   // Trucate text fuction starts here
   const truncateText = (text, maxLength) => {
     if (text.length > maxLength) {
@@ -30,6 +31,8 @@ const Provider = ({ children }) => {
     setMenuValue,
     screenData,
     setScreenData,
+    pageData,
+    setPageData,
   };
 
   return (
