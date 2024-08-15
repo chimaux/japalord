@@ -6,15 +6,15 @@ import {
   Text,
   SafeAreaView,
   ScrollView,
-  TextInput,
-  Switch,
-  TouchableOpacity,
+  // TextInput,
+  // Switch,
+  // TouchableOpacity,
   Dimensions,
 } from "react-native";
 import InputField from "../components/InputField";
 import * as Icons from "react-native-heroicons/solid";
 import Button1 from "../components/Button1";
-import { AntDesign } from "@expo/vector-icons";
+// import { AntDesign } from "@expo/vector-icons";
 import { GlobalContext } from "../../Context";
 import GobackBTN from "../components/GobackBTN";
 function ResetPasswordPage() {

@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { setStatusBarTranslucent, StatusBar } from "expo-status-bar";
-import React, { useLayoutEffect, useState, useEffect } from "react";
+import React, { useLayoutEffect, useState} from "react";
 import AppIntroSlider from "react-native-app-intro-slider";
 import { LinearGradient } from "expo-linear-gradient";
 import HomeScreen from "./HomeScreen";

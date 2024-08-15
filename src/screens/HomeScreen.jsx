@@ -38,52 +38,62 @@ const HomeScreen = () => {
     });
   }, []);
 
-  const [welcomeValue, setWelcomeValue] = useState([]);
-  useEffect(() => {
-    client
-      .fetch(
-        `
-  *[ _type == "welcomeMessage"]
-{
-  _id,content,name,name2
-}
-  `
-      )
-      .then((data) => {
-        setWelcomeValue(data);
-      });
-  }, []);
+  // const [welcomeValue, setWelcomeValue] = useState([]);
 
-  const [categoryValue, setCategoryValue] = useState([]);
-  const [categoryValue2, setCategoryValue2] = useState([]);
 
-  useEffect(() => {
-    client
-      .fetch(
-        `
-*[ _type == "category"]
-{
-  _id,title,navigateTitle,description,pos
-}|order(pos)[0..2]
+  // const [categoryValue, setCategoryValue] = useState([]);
+  // const [categoryValue2, setCategoryValue2] = useState([]);
 
-`
-      )
-      .then((data) => setCategoryValue(data));
-  }, []);
-
-  useEffect(() => {
-    client
-      .fetch(
-        `
-  *[ _type == "category"]
+const welcomeValue = [
   {
-    _id,title,navigateTitle,description,pos
-  }|order(pos)[3..4]
-  
-  `
-      )
-      .then((data) => setCategoryValue2(data));
-  }, []);
+    _id:"1",
+    name:"Hello!",
+    name2:"Wlcome Back!",
+    content:"Start exploring the easy japa tips from us and from the community",
+  }
+]
+const categoryValue = [
+  {
+    _id:"1",
+    pos:"1",
+    title:"Chat",
+    description:"Ask every of your travel concerns, connect with amazing others that have successfully relocated and those who intends to Japa.",
+    navigateTitle:"Start Connecting",
+  },
+  {
+    _id:"2",
+    pos:"2",
+    title:"HotUpdate",
+    description:"Everything you have ever wanted to know about traveling abroad! Access all our helpful contents to keep abreast of all relocation updates, never pass up a major japa opportunity!",
+    navigateTitle:"Explore",
+  },
+  {
+    _id:"3",
+    pos:"3",
+    title:"Reward",
+    description:"Tell your friends and family about EasyJapa App, collect points and redeem for cash and gifts.",
+    navigateTitle:"Get Rewards",
+  },
+
+]
+const categoryValue2 = [
+  {
+    _id:"1",
+    pos:"4",
+    title:"CV, SOP, and other Doc review",
+    description:"Avoid pitfalls, have your CV, SOP and other travel documents reviewed by us. Our associates are trained to help you.",
+    navigateTitle:"Get Started",
+  },
+  {
+    _id:"2",
+    pos:"5",
+    title:"Remote and VISA sponsored jobs",
+    description:"Connect with International Companies searching for Nigerians to hire (VISA and Flight sponsored) Also, access exclusive International remote jobs no one tells you about.",
+    navigateTitle:"Get Started",
+  },
+
+
+]
 
   //SafeAreaView instructions for android
   useLayoutEffect(() => {
@@ -218,7 +228,7 @@ const HomeScreen = () => {
                         ""
                       ),
                     content: items.description,
-                    gate_way_text: "Get started",
+                    gate_way_text: items.navigateTitle,
                     icon2: (
                       <SolidIcons.ArrowLongRightIcon
                         className="text-white "
