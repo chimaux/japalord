@@ -1,6 +1,6 @@
 import { View, Text, Image, TouchableOpacity, FlatList } from "react-native";
 import React from "react";
-import { urlFor } from "../../sanity";
+
 
 import { useNavigation } from "@react-navigation/native";
 
@@ -89,9 +89,7 @@ const LatestUpdateTab = ({ props: { data } }) => {
           >
             <View className="w-[40%]">
               <Image
-                source={{
-                  uri: urlFor(items.image).url(),
-                }}
+                source={items.image}
                 className=" rounded-xl"
                 resizeMode="cover"
                 style={{ width: "100%", height: 100 }}

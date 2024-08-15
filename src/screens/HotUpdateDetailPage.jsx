@@ -6,7 +6,7 @@ import { GlobalContext } from "../../Context";
 import GobackBTN from "../components/GobackBTN";
 import { AntDesign } from "@expo/vector-icons";
 import { Image } from "react-native";
-import { urlFor } from "../../sanity";
+
 const HotUpdateDetailPage = () => {
   const { menuValue, setMenuValue } = useContext(GlobalContext);
   console.log(title);
@@ -33,9 +33,7 @@ const HotUpdateDetailPage = () => {
         }}
       >
         <Image
-          source={{
-            uri: urlFor(image).url(),
-          }}
+          source={image}
           className="w-[100%] h-[220px] rounded-md my-6"
         />
         <Text

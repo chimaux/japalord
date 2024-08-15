@@ -7,7 +7,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import React, { useState } from "react";
-import { urlFor } from "../../sanity";
+
 
 import { useNavigation } from "@react-navigation/native";
 
@@ -95,9 +95,7 @@ const OtherUpdateTab = ({ props: { data } }) => {
       >
         <View className="w-[40%]">
           <Image
-            source={{
-              uri: urlFor(item.image).url(),
-            }}
+            source={item.image}
             className=" rounded-xl"
             resizeMode="cover"
             style={{ width: "100%", height: 100 }}

@@ -6,7 +6,7 @@ import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import * as OutlineIcons from "react-native-heroicons/outline";
 import * as SolidIcons from "react-native-heroicons/solid";
 import Chat_Hot_Reward from "../components/Chat_Hot_Reward/Chat_Hot_Reward";
-import client from "../../sanity";
+
 import { Ionicons, SimpleLineIcons } from "@expo/vector-icons";
 import TopMenu from "../components/TopMenu";
 import SideMenu from "../components/SideMenu";

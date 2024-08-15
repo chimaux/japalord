@@ -68,31 +68,36 @@ const HotUpdateScreen = () => {
         "_id": "1",
         "title": "Local High School Introduces Innovative Tech Curriculum",
         "content": "The local high school has unveiled a new technology curriculum aimed at preparing students for the rapidly evolving digital landscape. The program includes coding, robotics, and artificial intelligence courses, designed to equip students with practical skills and knowledge. Teachers are enthusiastic about the integration of modern tech tools, which they believe will enhance students' learning experiences and future career prospects. The school district hopes this initiative will set a new standard for educational technology.",
-        "image": topNews1
+        "image": topNews1,
+        "_createdAt":"2024-08-15T12:00:00Z"
     },
     {
         "_id": "2",
         "title": "City Council Approves Funding for New Green Spaces",
         "content": "In a recent vote, the City Council approved a significant budget allocation for the creation of new green spaces across the city. This initiative is part of a broader environmental strategy to increase urban greenery and improve public parks. The funding will be used to develop community gardens, tree planting programs, and recreational areas. City officials emphasized that the new green spaces will promote better health, provide recreational opportunities, and enhance the overall quality of life for residents.",
-        "image": topNews2
+        "image": topNews2,
+         "_createdAt":"2024-08-15T12:00:00Z"
     },
     {
         "_id": "3",
         "title": "Tech Giant Launches Revolutionary AI-Powered Home Assistant",
         "content": "Tech Giant Corp has announced the release of its latest product, a revolutionary AI-powered home assistant designed to simplify daily tasks and enhance home automation. The new device integrates seamlessly with existing smart home systems, offering advanced features such as voice recognition, personalized recommendations, and intelligent home management. The company claims that this innovation will transform how users interact with their homes, making everyday tasks more convenient and efficient. Pre-orders for the assistant have already begun, with high anticipation from tech enthusiasts.",
-        "image": topNews3
+        "image": topNews3,
+         "_createdAt":"2024-08-15T12:00:00Z"
     },
     {
         "_id": "4",
         "title": "Researchers Discover Breakthrough in Renewable Energy Storage",
         "content": "A team of researchers from the National Institute of Energy has made a groundbreaking discovery in the field of renewable energy storage. They have developed a new type of battery that promises significantly longer life and faster charging times compared to current technologies. This advancement could have profound implications for the renewable energy sector, potentially addressing one of the major challenges in harnessing solar and wind power. The research team is now working on scaling up the technology for commercial use and further testing.",
-        "image": topNews4
+        "image": topNews4,
+         "_createdAt":"2024-08-15T12:00:00Z"
     },
     {
         "_id": "5",
         "title": "New Study Reveals Impact of Remote Work on Urban Development",
         "content": "A new study conducted by the Urban Development Institute has shed light on how remote work is influencing urban development patterns. The research indicates a shift towards more suburban and rural living as employees increasingly work from home. This trend is leading to changes in real estate demand, infrastructure development, and local economies. The study highlights potential benefits, such as reduced traffic congestion, as well as challenges, including the need for updated broadband access in less urbanized areas. Urban planners are advised to consider these factors in future development projects.",
-        "image": topNews5
+        "image": topNews5,
+         "_createdAt":"2024-08-15T12:00:00Z"
     }
 ]
 

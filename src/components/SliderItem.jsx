@@ -1,7 +1,7 @@
 import { View, Text, Image, Dimensions, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { urlFor } from "../../sanity";
+
 const { width, height } = Dimensions.get("screen");
 import { useNavigation } from "@react-navigation/native";
 const SliderItem = ({ item }) => {
@@ -23,9 +23,7 @@ const SliderItem = ({ item }) => {
     >
       <View className="rounded-2xl overflow-hidden w-[92vw]">
         <Image
-          source={{
-            uri: urlFor(item.image).url(),
-          }}
+          source={item.image}
           resizeMode="cover"
           style={{ width: "100%", height: 200 }}
         />

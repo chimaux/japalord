@@ -3,9 +3,11 @@ import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import {
   Ionicons,
+  AntDesign,
   SimpleLineIcons,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
+
 import Button1 from "./Button1";
 
 const SideMenu = ({ props: { state, visibility } }) => {
@@ -46,7 +48,7 @@ const SideMenu = ({ props: { state, visibility } }) => {
               visibility("hidden");
             }}
           >
-            <Ionicons name="ios-grid-outline" size={30} color="#6e002b" />
+            <AntDesign name="dashboard" size={30} color="#6e002b" />
 
             <Text
               className="text-lg text-[#6e002b]"
@@ -101,7 +103,7 @@ const SideMenu = ({ props: { state, visibility } }) => {
           {/* button go premium */}
           <Button1
             buttonProps={{
-              onPress: open,
+              functionExec: open,
               title: "Go Premium",
               icon: <SimpleLineIcons name="diamond" size={30} color="white" />,
               backgroundColor: "#6e002b",

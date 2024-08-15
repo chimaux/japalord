@@ -12,15 +12,30 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [isAppFirstLaunched, setIsAppFirstLaunched] = useState(null);
-  useLayoutEffect(async () => {
-    const appData = await AsyncStorage.getItem("isAppFirstLaunched");
-    if (appData == null) {
-      setIsAppFirstLaunched(true);
-      AsyncStorage.setItem("isAppFirstLaunched", "false");
-    } else {
-      setIsAppFirstLaunched(false);
+  // useLayoutEffect(async () => {
+  //   const appData = await AsyncStorage.getItem("isAppFirstLaunched");
+  //   if (appData == null) {
+  //     setIsAppFirstLaunched(true);
+  //     AsyncStorage.setItem("isAppFirstLaunched", "false");
+  //   } else {
+  //     setIsAppFirstLaunched(false);
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    async function checkFirstLaunch() {
+      const appData = await AsyncStorage.getItem("isAppFirstLaunched");
+      if (appData == null) {
+        setIsAppFirstLaunched(true);
+        AsyncStorage.setItem("isAppFirstLaunched", "false");
+      } else {
+        setIsAppFirstLaunched(false);
+      }
     }
+  
+    checkFirstLaunch();
   }, []);
+
   return (
 
     isAppFirstLaunched != null && (

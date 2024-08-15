@@ -19,13 +19,14 @@ const Button1 = ({
     name,
     loading,
   },
+
 }) => {
   const { setMenuValue } = useContext(GlobalContext);
   const navigation = useNavigation();
   return (
     <TouchableOpacity
       onPress={() => {
-        functionExec();
+        functionExec ? functionExec():null
       }}
       className={` ${bborder} ${width} rounded  text-center ${pbottom} py-3`}
       style={[
